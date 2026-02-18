@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
+/* Paleta gamer morado - CompuServicesSoft */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0010;
+  --foreground: #f0e6ff;
+
+  /* Morados principales */
+  --gamer-purple-950: #0a0010;
+  --gamer-purple-900: #12001f;
+  --gamer-purple-800: #1e0035;
+  --gamer-purple-700: #2d0050;
+  --gamer-purple-600: #4a0080;
+  --gamer-purple-500: #8c52ff;
+  --gamer-purple-400: #a020f0;
+  --gamer-purple-300: #c060ff;
+  --gamer-purple-200: #d89fff;
+  --gamer-purple-100: #f0e0ff;
+
+  /* Acento cyan/eléctrico */
+  --gamer-cyan:  #00e5ff;
+  --gamer-cyan-dim: #00b8cc;
+
+  /* Acento rosa/magenta */
+  --gamer-pink: #ff00aa;
+  --gamer-pink-dim: #cc0088;
+
+  /* Acento verde neón */
+  --gamer-green: #39ff14;
+
+  /* Grises oscuros con tinte morado */
+  --surface-1: #130020;
+  --surface-2: #1c0030;
+  --surface-3: #260040;
+  --border-glow: rgba(160, 32, 240, 0.4);
 }
 
 @theme inline {
@@ -10,17 +40,138 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Colores personalizados disponibles como clases Tailwind */
+  --color-gamer-950:   var(--gamer-purple-950);
+  --color-gamer-900:   var(--gamer-purple-900);
+  --color-gamer-800:   var(--gamer-purple-800);
+  --color-gamer-700:   var(--gamer-purple-700);
+  --color-gamer-600:   var(--gamer-purple-600);
+  --color-gamer-500:   var(--gamer-purple-500);
+  --color-gamer-400:   var(--gamer-purple-400);
+  --color-gamer-300:   var(--gamer-purple-300);
+  --color-gamer-200:   var(--gamer-purple-200);
+  --color-gamer-100:   var(--gamer-purple-100);
+  --color-gamer-cyan:  var(--gamer-cyan);
+  --color-gamer-pink:  var(--gamer-pink);
+  --color-gamer-green: var(--gamer-green);
+  --color-surface-1:   var(--surface-1);
+  --color-surface-2:   var(--surface-2);
+  --color-surface-3:   var(--surface-3);
+
+  /* Ancho máximo del sitio */
+  --width-site: 1624px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), 'Montserrat', Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar gamer */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gamer-purple-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gamer-purple-500);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gamer-purple-400);
+}
+
+/* Animación brillo de borde */
+@keyframes borderGlow {
+  0%, 100% { box-shadow: 0 0 8px var(--gamer-purple-500), 0 0 20px rgba(122,0,212,0.3); }
+  50%       { box-shadow: 0 0 16px var(--gamer-purple-400), 0 0 40px rgba(160,32,240,0.5); }
+}
+
+/* Animación texto brillante */
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 10px var(--gamer-cyan), 0 0 20px var(--gamer-cyan); }
+  50%       { text-shadow: 0 0 20px var(--gamer-cyan), 0 0 40px var(--gamer-cyan), 0 0 60px var(--gamer-cyan); }
+}
+
+/* Animación float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Animación scanline sutil */
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Animación partículas de fondo */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+.animate-border-glow { animation: borderGlow 2s ease-in-out infinite; }
+.animate-text-glow   { animation: textGlow 2s ease-in-out infinite; }
+.animate-float       { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow  { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* Gradiente de texto gamer */
+.text-gradient-gamer {
+  background: linear-gradient(135deg, var(--gamer-purple-300), var(--gamer-cyan), var(--gamer-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--gamer-purple-200), var(--gamer-purple-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tarjeta con borde brillante */
+.card-gamer {
+  background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
+  border: 1px solid var(--border-glow);
+  transition: all 0.3s ease;
+}
+.card-gamer:hover {
+  border-color: var(--gamer-purple-400);
+  box-shadow: 0 0 20px rgba(160,32,240,0.4), 0 8px 32px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+
+/* Botón gamer primario */
+.btn-gamer {
+  background: linear-gradient(135deg, var(--gamer-purple-600), var(--gamer-purple-500));
+  border: 1px solid var(--gamer-purple-400);
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-gamer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.4s ease;
+}
+.btn-gamer:hover::before { left: 100%; }
+.btn-gamer:hover {
+  box-shadow: 0 0 20px rgba(122,0,212,0.6);
+  transform: translateY(-2px);
+}
+
+/* Línea decorativa neón */
+.neon-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gamer-purple-400), var(--gamer-cyan), var(--gamer-purple-400), transparent);
 }
