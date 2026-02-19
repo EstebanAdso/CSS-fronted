@@ -19,7 +19,7 @@ export default function Home() {
 
       {/* Sección descarga catálogo */}
       <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-100">
-        <div className="max-w-[1624px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="container-site flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-black text-gray-900">¿Quieres ver todos nuestros productos?</h2>
             <p className="text-sm text-gray-500 mt-0.5">Descarga nuestro catálogo completo con precios actualizados en PDF.</p>

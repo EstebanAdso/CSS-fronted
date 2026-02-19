@@ -67,7 +67,7 @@ export default async function ArmarPage() {
     <>
       <Navbar tema="claro" />
       <main className="min-h-screen bg-gray-50 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1624px] mx-auto">
+        <div className="container-site">
 
           {/* Encabezado */}
           <div className="mb-10 text-center">

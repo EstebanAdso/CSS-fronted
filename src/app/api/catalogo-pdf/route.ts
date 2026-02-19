@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8084";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8085";
 
 function formatPrecio(valor: number): string {
   return new Intl.NumberFormat("es-CO", {

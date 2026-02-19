@@ -7,7 +7,7 @@ import WhatsAppSelector from "@/components/WhatsAppSelector";
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-[1624px] mx-auto">
+      <div className="container-site">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
           {/* Columna texto */}

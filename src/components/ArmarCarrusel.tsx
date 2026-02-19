@@ -73,7 +73,7 @@ export default function ArmarCarrusel() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
 
-      <div className="max-w-[1624px] mx-auto">
+      <div className="container-site">
         {/* Encabezado */}
         <div className="text-center mb-14">
           <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-3">

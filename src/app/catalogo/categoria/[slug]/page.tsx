@@ -45,7 +45,7 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
   const { slug } = await params;
   const sp = await searchParams;
   const page = sp.page ? Math.max(0, Number(sp.page) - 1) : 0;
-  const PAGE_SIZE = 12;
+  const PAGE_SIZE = 20;
 
   let categoriasData: Categoria[] = [];
   let categoriaActiva: Categoria | null = null;
@@ -76,7 +76,7 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
       <Navbar tema="claro" />
 
       {/* Layout: sidebar + grid */}
-      <div className="max-w-[1624px] mx-auto px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
+      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
 
           <CatalogoFiltros

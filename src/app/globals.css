@@ -175,3 +175,18 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--gamer-purple-400), var(--gamer-cyan), var(--gamer-purple-400), transparent);
 }
+
+/* Contenedor principal responsive */
+.container-site {
+  width: 100%;
+  max-width: 1400px; /* FHD y menores */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2K (2560px) y superiores: ancho máximo 1624px */
+@media (min-width: 2560px) {
+  .container-site {
+    max-width: 1624px;
+  }
+}

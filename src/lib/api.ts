@@ -3,7 +3,7 @@ import type { Categoria, Producto, PaginatedResponse } from "@/types";
 /* URL base de la API — cambiar en .env.local para producción:
    NEXT_PUBLIC_API_URL=https://tu-servidor.com */
 const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8084";
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8085";
 
 /* Normaliza la ruta de imagen del backend (viene como ../imagenes/products/...)
    y la convierte en una ruta absoluta desde /public */
@@ -18,7 +18,7 @@ export function resolverImagen(rutaBackend: string): string {
 
 export async function getProductos(
   page = 0,
-  size = 12,
+  size = 20,
   sort = "nombre,asc"
 ): Promise<PaginatedResponse<Producto>> {
   const res = await fetch(
@@ -40,7 +40,7 @@ export async function getProductoPorId(id: number): Promise<Producto> {
 export async function buscarProductos(
   q: string,
   page = 0,
-  size = 12
+  size = 20
 ): Promise<PaginatedResponse<Producto>> {
   const res = await fetch(
     `${BASE_URL}/api/products/search?q=${encodeURIComponent(q)}&page=${page}&size=${size}`,
@@ -71,7 +71,7 @@ export async function getCategoriaPorId(id: number): Promise<Categoria> {
 export async function getProductosPorCategoria(
   categoriaId: number,
   page = 0,
-  size = 12
+  size = 20
 ): Promise<PaginatedResponse<Producto>> {
   const res = await fetch(
     `${BASE_URL}/api/categories/${categoriaId}/products?page=${page}&size=${size}`,

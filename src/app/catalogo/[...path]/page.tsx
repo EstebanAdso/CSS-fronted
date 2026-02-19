@@ -120,7 +120,7 @@ export default async function CatalogoPathPage({ params }: Props) {
       <Navbar tema="claro" />
 
       {/* Breadcrumb */}
-      <div className="pt-20 pb-0 px-4 sm:px-6 lg:px-8 max-w-[1624px] mx-auto border-b border-gray-100">
+      <div className="pt-20 pb-0 px-4 sm:px-6 lg:px-8 container-site border-b border-gray-100">
         <nav aria-label="breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 py-3 flex-wrap">
           <Link href="/" className="hover:text-[#8c52ff] transition-colors">Inicio</Link>
           <span>/</span>
@@ -135,7 +135,7 @@ export default async function CatalogoPathPage({ params }: Props) {
       </div>
 
       {/* Detalle */}
-      <section className="px-4 sm:px-6 lg:px-8 py-10 max-w-[1624px] mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 py-10 container-site">
         <div className="grid md:grid-cols-2 gap-10 items-start">
 
           {/* Imagen */}
@@ -232,7 +232,7 @@ export default async function CatalogoPathPage({ params }: Props) {
 
       {/* Relacionados */}
       {relacionados.length > 0 && (
-        <section className="px-4 sm:px-6 lg:px-8 pb-20 max-w-[1624px] mx-auto">
+        <section className="px-4 sm:px-6 lg:px-8 pb-20 container-site">
           <div className="border-t border-gray-100 pt-10">
             <h2 className="text-xl font-black text-gray-900 mb-6">
               Más en <span className="text-[#8c52ff]">{producto.categoria.nombre}</span>

@@ -23,7 +23,7 @@ export default function ArmarPCBanner() {
           style={{ background: "radial-gradient(circle, #ffffff, transparent)" }} />
       </div>
 
-      <div className="max-w-[1624px] mx-auto relative z-10">
+      <div className="container-site relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
           {/* Texto izquierdo */}

@@ -72,7 +72,7 @@ export default async function CatalogoPage({
   const q = params.q ?? "";
   const categoriaId = params.categoriaId ? Number(params.categoriaId) : null;
   const page = params.page ? Math.max(0, Number(params.page) - 1) : 0;
-  const PAGE_SIZE = 12;
+  const PAGE_SIZE = 20;
 
   /* Redirect legacy: ?q= → /catalogo/buscar/[slug] */
   if (q) redirect(urlBusqueda(q));
@@ -121,7 +121,7 @@ export default async function CatalogoPage({
       <Navbar tema="claro" />
 
       {/* Layout principal: sidebar + contenido */}
-      <div className="max-w-[1624px] mx-auto px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
+      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
         {/* En mobile: columna (filtros arriba, grid abajo). En desktop: fila (sidebar izq, grid der) */}
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
 

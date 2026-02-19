@@ -93,7 +93,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
   return (
     <>
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
-      <nav className="max-w-[1624px] mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="container-site px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}

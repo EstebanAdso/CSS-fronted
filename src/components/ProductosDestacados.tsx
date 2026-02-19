@@ -43,7 +43,7 @@ export default async function ProductosDestacados() {
 
   return (
     <section className="pt-6 pb-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
-      <div className="max-w-[1624px] mx-auto">
+      <div className="container-site">
         <div className="mb-10">
           <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-2">
             — Productos —

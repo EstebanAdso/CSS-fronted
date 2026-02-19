@@ -68,7 +68,7 @@ const contactos = [
 export default function Footer() {
   return (
     <footer className="bg-[#111111] pt-14 pb-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[1624px] mx-auto">
+      <div className="container-site">
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
 
