@@ -128,6 +128,13 @@ export default function RootLayout({
     ],
     priceRange: "$$",
     image: "https://compuservicessoft.com/imagenes/local.jpeg",
+    hasMap: "https://share.google/9K90cdC3XFqwfDQr2",
+    knowsAbout: [
+      "Venta de componentes de computador",
+      "Servicio técnico de computadores",
+      "Armado de PC gamer",
+      "SSD", "RAM", "Procesadores", "Tarjetas gráficas", "Motherboards",
+    ],
   };
 
   return (

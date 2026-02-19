@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 import type { Producto } from "@/types";
 import { resolverImagen } from "@/lib/api";
 import { urlProducto } from "@/lib/utils";
@@ -19,6 +22,15 @@ function formatPrecio(valor: number): string {
 
 export default function ProductCard({ producto }: Props) {
   const imagenSrc = resolverImagen(producto.imagen);
+  const tituloRef = useRef<HTMLHeadingElement>(null);
+  const [tituloLargo, setTituloLargo] = useState(false);
+
+  useEffect(() => {
+    const el = tituloRef.current;
+    if (!el) return;
+    /* line-height ~1.375 × font-size 14px ≈ 19.25px por línea; 2 líneas ≈ 38.5px */
+    setTituloLargo(el.scrollHeight > 40);
+  }, []);
 
   return (
     <Link
@@ -44,17 +56,22 @@ export default function ProductCard({ producto }: Props) {
           {producto.categoria.nombre}
         </span>
 
-        {/* Nombre */}
-        <h3 className="text-sm font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-gray-900 transition-colors">
+        {/* Nombre — sin clamp para medir altura real, luego se limita visualmente */}
+        <h3
+          ref={tituloRef}
+          className="text-sm font-semibold text-gray-800 leading-snug line-clamp-4 group-hover:text-gray-900 transition-colors"
+        >
           {producto.nombre}
         </h3>
 
-        {/* Descripción */}
-        <p className="text-xs text-gray-400 leading-relaxed line-clamp-2 flex-1">
-          {producto.descripcion}
-        </p>
+        {/* Descripción — se oculta si el título ocupa más de 2 líneas */}
+        {!tituloLargo && (
+          <p className="text-xs text-gray-400 leading-relaxed line-clamp-2 flex-1">
+            {producto.descripcion}
+          </p>
+        )}
 
-        {/* Precio + Ver detalle: columna en mobile, fila en sm+ */}
+        {/* Precio + Ver detalle */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-2 pt-2 border-t border-gray-100 gap-1">
           <span className="text-base font-black" style={{ color: "rgb(40, 167, 69)" }}>
             {formatPrecio(producto.precioVendido)}

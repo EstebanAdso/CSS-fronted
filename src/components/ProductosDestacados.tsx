@@ -12,25 +12,26 @@ const FILAS = [
   { slug: "grafica",         titulo: "Tarjetas Gráficas", lema: "Lleva tus gráficos al siguiente nivel" },
 ];
 
-async function cargarFila(slug: string): Promise<{ productos: Producto[]; urlVerTodos: string } | null> {
+export default async function ProductosDestacados() {
+  /* Una sola llamada a categorías, luego carga filas en paralelo */
+  let categorias: Awaited<ReturnType<typeof getCategorias>> = [];
   try {
-    const categorias = await getCategorias();
-    const cat = categorias.find((c) => slugify(c.nombre) === slug);
-    if (!cat) return null;
-    const data = await getProductosPorCategoria(cat.id, 0, 12);
-    if (!data.content.length) return null;
-    return { productos: data.content, urlVerTodos: urlCategoriaFiltro(cat.nombre) };
+    categorias = await getCategorias();
   } catch {
     return null;
   }
-}
 
-export default async function ProductosDestacados() {
-  /* Carga todas las filas en paralelo */
   const resultados = await Promise.all(
     FILAS.map(async (fila) => {
-      const data = await cargarFila(fila.slug);
-      return data ? { ...fila, ...data } : null;
+      try {
+        const cat = categorias.find((c) => slugify(c.nombre) === fila.slug);
+        if (!cat) return null;
+        const data = await getProductosPorCategoria(cat.id, 0, 12);
+        if (!data.content.length) return null;
+        return { ...fila, productos: data.content, urlVerTodos: urlCategoriaFiltro(cat.nombre) };
+      } catch {
+        return null;
+      }
     })
   );
 
