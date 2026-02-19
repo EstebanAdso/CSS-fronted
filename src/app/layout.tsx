@@ -128,7 +128,7 @@ export default function RootLayout({
     ],
     priceRange: "$$",
     image: "https://compuservicessoft.com/imagenes/local.jpeg",
-    hasMap: "https://share.google/9K90cdC3XFqwfDQr2",
+    hasMap: "https://maps.app.goo.gl/e3nUAFL7zDNTMF9i7",
     knowsAbout: [
       "Venta de componentes de computador",
       "Servicio técnico de computadores",

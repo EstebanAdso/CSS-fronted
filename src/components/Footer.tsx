@@ -59,7 +59,7 @@ const contactos = [
       </svg>
     ),
     label: "CC San Agustín, Local 224A — Pasto, Nariño",
-    href: "https://maps.app.goo.gl/SEhrrnQU9554qtzZ9",
+    href: "https://maps.app.goo.gl/e3nUAFL7zDNTMF9i7",
     external: true,
   },
 ];

@@ -66,7 +66,7 @@ export default function AboutSection() {
             {/* Botones */}
             <div className="flex flex-wrap gap-4 mt-8">
               <a
-                href="https://maps.app.goo.gl/SEhrrnQU9554qtzZ9"
+                href="https://maps.app.goo.gl/e3nUAFL7zDNTMF9i7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-gray-900 hover:bg-gray-700 text-white transition-colors"
