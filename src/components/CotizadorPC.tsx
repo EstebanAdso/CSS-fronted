@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import type { Producto } from "@/types";
 import WhatsAppSelector from "@/components/WhatsAppSelector";
+import { urlProducto } from "@/lib/utils";
 
 type DatosCategorias = {
   procesadores: Producto[];
@@ -21,6 +23,7 @@ type ItemCarrito = {
   id: string;
   nombre: string;
   precio: number;
+  url: string;
 };
 
 function formatPrecio(valor: number): string {
@@ -103,6 +106,7 @@ export default function CotizadorPC({ datos }: { datos: DatosCategorias }) {
         id,
         nombre: cantidad > 1 ? `${prod.nombre} (x${cantidad})` : prod.nombre,
         precio: prod.precioVendido * cantidad,
+        url: urlProducto(prod.nombre, prod.categoria?.nombre ?? ""),
       });
     };
     agregar("procesador", seleccion.procesador ?? null);
@@ -301,7 +305,15 @@ export default function CotizadorPC({ datos }: { datos: DatosCategorias }) {
                   className="px-5 py-3 flex items-start justify-between gap-3"
                   style={{ background: idx % 2 === 0 ? "#f9f9f9" : "#ffffff" }}
                 >
-                  <p className="text-base text-gray-700 leading-snug flex-1">{item.nombre}</p>
+                  <Link
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Ver producto"
+                    className="text-sm text-gray-700 leading-snug flex-1 hover:text-gray-900 hover:underline underline-offset-2 transition-colors"
+                  >
+                    {item.nombre}
+                  </Link>
                   <p className="text-base font-bold text-gray-900 shrink-0">{formatPrecio(item.precio)}</p>
                 </div>
               ))}

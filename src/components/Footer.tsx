@@ -5,8 +5,8 @@ const currentYear = new Date().getFullYear();
 const links = [
   { label: "Inicio", href: "/" },
   { label: "Catálogo de Productos", href: "/catalogo" },
-  { label: "Arma tu PC", href: "/armar" },
-  { label: "Quiénes Somos", href: "#about" },
+  { label: "Arma tu PC", href: "/armar-pc-gamer" },
+  { label: "Quiénes Somos", href: "/#about" },
   { label: "Garantía de Productos", href: "/politicas" },
   { label: "Políticas de Devolución", href: "/politicas" },
 ];

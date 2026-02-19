@@ -94,13 +94,15 @@ export default function Navbar({ tema = "oscuro" }: Props) {
     <>
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
       <nav className="container-site px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#8c52ff] to-[#a020f0] flex items-center justify-center shadow-[0_0_12px_rgba(122,0,212,0.4)] group-hover:shadow-[0_0_20px_rgba(160,32,240,0.6)] transition-all duration-300">
-              <span className="text-white font-black text-sm">CS</span>
-            </div>
+            <img
+              src="/favicon/favicon-96x96.png"
+              alt="CompuServicesSoft logo"
+              className="w-9 h-9 rounded-lg shadow-[0_0_12px_rgba(122,0,212,0.4)] group-hover:shadow-[0_0_20px_rgba(160,32,240,0.6)] transition-all duration-300"
+            />
             <span className="font-black text-lg tracking-tight">
               <span className={logoTextColor}>Compu</span>
               <span className="text-[#8c52ff]">Services</span>
@@ -109,7 +111,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
           </Link>
 
           {/* Links desktop */}
-          <ul className="hidden md:flex items-center gap-1">
+          <ul className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
                 {"external" in link && link.external ? (
@@ -137,14 +139,14 @@ export default function Navbar({ tema = "oscuro" }: Props) {
           {/* Botón Contáctanos desktop */}
           <button
             onClick={() => setModalOpen(true)}
-            className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#8c52ff] hover:bg-[#7040dd] text-white transition-colors"
+            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#8c52ff] hover:bg-[#7040dd] text-white transition-colors"
           >
             Contáctanos
           </button>
 
           {/* Hamburguesa mobile */}
           <button
-            className={`md:hidden flex flex-col gap-1.5 p-2 rounded-lg transition-colors ${esClaro ? "hover:bg-gray-100" : "hover:bg-[#1c0030]"}`}
+            className={`lg:hidden flex flex-col gap-1.5 p-2 rounded-lg transition-colors ${esClaro ? "hover:bg-gray-100" : "hover:bg-[#1c0030]"}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menú"
           >
@@ -155,7 +157,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
         </div>
 
         {/* Menú mobile */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}>
           <div className={`pb-4 pt-2 ${menuMobileBg}`}>
             <ul className="flex flex-col gap-1">
               {navLinks.map((link) => (

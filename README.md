@@ -25,6 +25,22 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
+### Variable de entorno
+
+La URL base de la API se configura en `.env.local`:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8084
+```
+
+Para producción usar `.env.production`:
+
+```env
+NEXT_PUBLIC_API_URL=https://compuservicessoft.com
+```
+
+Si no existe el archivo, el valor por defecto es `http://localhost:8084` (definido en `src/lib/api.ts`).
+
 ---
 
 ## Estructura principal
@@ -32,32 +48,50 @@ Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 ```
 src/
 ├── app/
-│   ├── layout.tsx               # Layout raíz: SEO, Schema.org, fuente Montserrat
+│   ├── layout.tsx               # Layout raíz: SEO, Schema.org, favicon, fuente Montserrat
 │   ├── page.tsx                 # Página de inicio
-│   ├── globals.css              # Variables CSS y animaciones globales
+│   ├── globals.css              # Variables CSS, animaciones y scroll-margin-top para anchors
+│   ├── favicon.ico              # Favicon principal (detectado automáticamente por Next.js)
+│   ├── favicon/                 # Carpeta con todos los assets del favicon (NO servida por Next.js)
 │   ├── catalogo/                # Catálogo de productos
 │   │   ├── page.tsx             # Listado con filtros por categoría
 │   │   ├── buscar/[q]/page.tsx  # Búsqueda de productos
-│   │   └── [...path]/page.tsx   # Detalle de producto
+│   │   └── [...path]/page.tsx   # Detalle de producto con WhatsAppSelector
 │   ├── armar-pc-gamer/
 │   │   └── page.tsx             # Cotizador de PC por componentes
-│   └── politicas/
-│       └── page.tsx             # Garantía y políticas de devolución
+│   ├── politicas/
+│   │   └── page.tsx             # Garantía y políticas de devolución
+│   └── api/
+│       └── catalogo-pdf/
+│           └── route.ts         # Genera catálogo HTML con todos los productos para imprimir como PDF
 │
 └── components/
-    ├── Navbar.tsx               # Barra de navegación fija con scroll effect y menú mobile
-    ├── HeroSection.tsx          # Hero con CTAs, redes sociales y flecha de scroll
+    ├── Navbar.tsx               # Navbar fija: logo real (favicon PNG), scroll effect, menú mobile
+    ├── HeroSection.tsx          # Hero con CTAs, redes sociales y botón "Explorar" con scroll suave
     ├── CategoriasSection.tsx    # Grid de categorías de productos
     ├── CategoriasCarrusel.tsx   # Carrusel horizontal de categorías
     ├── FilaCarrusel.tsx         # Carrusel de productos por categoría
     ├── AboutSection.tsx         # Sección "Quiénes Somos"
     ├── ServiciosSection.tsx     # Servicios: técnico, asesorías, venta
-    ├── CotizadorPC.tsx          # Formulario interactivo para armar PC con resumen y descuentos
+    ├── CotizadorPC.tsx          # Cotizador de PC: selects, resumen, descuentos, links a productos
     ├── CatalogoFiltros.tsx      # Filtros de categoría + búsqueda para el catálogo
     ├── ProductCard.tsx          # Tarjeta de producto individual
-    ├── WhatsAppFloat.tsx        # Botón flotante de WhatsApp con popover de selección de número
-    ├── WhatsAppSelector.tsx     # Componente reutilizable: popover para elegir número de WhatsApp
-    └── Footer.tsx               # Pie de página con links, contacto y copyright
+    ├── DescargaCatalogo.tsx     # Botón que abre el catálogo PDF en nueva pestaña
+    ├── WhatsAppFloat.tsx        # Botón flotante de WhatsApp con popover propio (fixed)
+    ├── WhatsAppSelector.tsx     # Popover reutilizable para elegir entre dos números de WhatsApp
+    └── Footer.tsx               # Pie de página responsive: centrado en mobile, columnas en desktop
+```
+
+```
+public/
+└── favicon/                     # Assets del favicon servidos como rutas públicas
+    ├── favicon.ico
+    ├── favicon.svg
+    ├── favicon-96x96.png
+    ├── apple-touch-icon.png     # iOS pantalla de inicio
+    ├── web-app-manifest-192x192.png
+    ├── web-app-manifest-512x512.png
+    └── site.webmanifest         # Manifiesto PWA
 ```
 
 ---
@@ -78,15 +112,17 @@ src/
 ## Funcionalidades implementadas
 
 ### Navegación y layout
-- **Navbar** con dos temas: `oscuro` (inicio, fondo transparente que oscurece al hacer scroll) y `claro` (catálogo/producto, fondo blanco fijo).
+- **Navbar** con logo real (imagen PNG del favicon), dos temas: `oscuro` (inicio) y `claro` (catálogo/producto).
 - Menú hamburguesa en mobile con animación.
 - Modal de contacto con íconos de redes sociales, WhatsApp, email y ubicación.
-- **Footer** responsive: centrado en mobile, columnas en desktop. Incluye marca, navegación y contacto completo.
+- **Footer** responsive: centrado en mobile, columnas en desktop. Link "Quiénes Somos" usa `/#about` para funcionar desde cualquier página.
+- Scroll suave **solo** en el botón "Explorar" del Hero (via `scrollIntoView`) — la navegación entre páginas es instantánea.
+- `scroll-margin-top: 88px` en todas las secciones con `id` para compensar el Navbar fijo al navegar a anchors.
 
 ### Catálogo de productos
 - Listado con filtros por categoría (sidebar en desktop, drawer en mobile).
 - Búsqueda de productos por nombre con página dedicada `/catalogo/buscar/[q]`.
-- Detalle de producto individual con imagen, precio y descripción.
+- Detalle de producto: botón "Preguntar por WhatsApp" usa `WhatsAppSelector` para elegir número.
 - `ProductCard` con imagen optimizada via `next/image`.
 
 ### Cotizador de PC (`/armar-pc-gamer`)
@@ -94,15 +130,30 @@ src/
 - Resumen en tiempo real con precios individuales y total.
 - **Descuento automático del 5%** al completar la torre (sin gráfica).
 - **Obsequio de teclado + mouse** al agregar monitor junto con la torre completa.
-- Botón de envío de cotización por WhatsApp con mensaje pre-armado dinámico.
+- Cada producto del resumen es un **link clickeable** que abre la página del producto en nueva pestaña.
+- Botón de envío de cotización por WhatsApp con `WhatsAppSelector` para elegir número.
+- Estilos sin morado excesivo: promociones en gris/verde, total en negro, botón WhatsApp verde.
 
 ### WhatsApp con selección de número
-- Componente `WhatsAppSelector`: al hacer clic en cualquier botón de WhatsApp, aparece un popover tipo nube que pregunta a cuál número escribir (317 primero, 324 segundo).
-- Componente `WhatsAppFloat`: botón flotante verde en la esquina inferior derecha con popover propio posicionado correctamente sobre el círculo, tooltip "¡Escríbenos!" al hacer hover y animación de pulso.
-- Implementado en: `WhatsAppFloat`, `HeroSection`, `ServiciosSection`, `AboutSection`, `CotizadorPC`.
+- `WhatsAppSelector`: popover tipo nube al hacer clic — muestra los dos números (317 primero, 324 segundo) para que el usuario elija.
+- `WhatsAppFloat`: botón flotante verde, esquina inferior derecha, popover posicionado con `fixed` para evitar clipping, tooltip al hover, animación de pulso.
+- Implementado en: `WhatsAppFloat`, `HeroSection`, `ServiciosSection`, `AboutSection`, `CotizadorPC`, detalle de producto.
+- **Eliminados todos los botones/links de llamada telefónica** (`tel:`) del sitio.
+
+### Catálogo PDF
+- Ruta `/api/catalogo-pdf` genera un HTML con todos los productos agrupados por categoría.
+- Al abrir en nueva pestaña, el navegador muestra el diálogo de impresión/guardar como PDF.
+- Botón `DescargaCatalogo` visible solo en desktop (`hidden md:inline-flex`).
+
+### Favicon y PWA
+- Logo real: diseño gamer con letras "CSS", fondo morado, líneas decorativas.
+- Assets en `public/favicon/`: SVG vectorial, PNG 96px, ICO, apple-touch-icon, manifests 192/512px.
+- `layout.tsx` configura `icons` y `manifest` en metadata de Next.js.
+- `site.webmanifest` con `theme_color: #8c52ff`, `background_color: #0a0010`, `start_url: /`.
+- Logo real también usado en el **Navbar** (imagen PNG en lugar del cuadrado CSS generado).
 
 ### SEO y metadatos
-- `layout.tsx` con `metadata` completo: título, descripción, keywords, OpenGraph, Twitter Card.
+- `layout.tsx` con `metadata` completo: título, descripción, keywords, OpenGraph, Twitter Card, icons, manifest.
 - Schema.org `LocalBusiness` en JSON-LD con nombre, dirección, teléfonos, horario y coordenadas.
 - Imágenes con `next/image` optimizadas, `priority` en imágenes LCP, `loading="lazy"` en el resto.
 
@@ -112,8 +163,8 @@ src/
 - `sizes` correctos en todos los `next/image` según el layout real.
 
 ### Otros
-- Eliminado el botón ✕ de limpiar búsqueda en mobile del catálogo (`CatalogoFiltros`) — el usuario limpia manualmente o cambiando de categoría.
-- Padding-top extra en mobile en la página de búsqueda para compensar Navbar + barra de filtros fija.
+- Eliminado el botón ✕ de limpiar búsqueda en mobile del catálogo (`CatalogoFiltros`).
+- SVGs genéricos de Next.js eliminados de `public/` (`file.svg`, `globe.svg`, `next.svg`, `vercel.svg`, `window.svg`).
 
 ---
 

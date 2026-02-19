@@ -77,7 +77,7 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
 
       {/* Layout: sidebar + grid */}
       <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
-        <div className="flex flex-col lg:flex-row gap-6 mt-4">
+        <div className="flex flex-col lg:flex-row gap-6 mt-0 lg:mt-4">
 
           <CatalogoFiltros
             categorias={categoriasData}
@@ -89,7 +89,7 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
           <div className="flex-1 min-w-0">
 
             {/* Título SEO dentro del área de productos */}
-            <h1 className="text-xl sm:text-2xl font-black text-gray-900 mb-4 text-center">
+            <h1 className="text-xl sm:text-2xl font-black text-gray-900 mb-4 text-center mt-0 lg:mt-4">
               {categoriaActiva ? categoriaActiva.nombre : "Catálogo de Productos"}
               {totalElements > 0 && (
                 <span className="ml-2 text-sm font-normal text-gray-400">{totalElements} producto{totalElements !== 1 ? "s" : ""}</span>

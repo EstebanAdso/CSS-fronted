@@ -16,7 +16,7 @@ export default function DescargaCatalogo() {
     <button
       onClick={handleDescargar}
       disabled={cargando}
-      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-[#8c52ff] text-[#8c52ff] hover:bg-[#8c52ff] hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-[#8c52ff] text-[#8c52ff] hover:bg-[#8c52ff] hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
     >
       {cargando ? (
         <>
