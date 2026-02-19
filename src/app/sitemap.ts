@@ -9,9 +9,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   /* Páginas estáticas */
   const estaticas: MetadataRoute.Sitemap = [
-    { url: BASE, lastModified: ahora, changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE}/catalogo`, lastModified: ahora, changeFrequency: "daily", priority: 0.9 },
-    { url: `${BASE}/catalogo/categorias`, lastModified: ahora, changeFrequency: "weekly", priority: 0.8 },
+    { url: BASE,                              lastModified: ahora, changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${BASE}/catalogo`,                lastModified: ahora, changeFrequency: "daily",   priority: 0.9 },
+    { url: `${BASE}/armar-pc-gamer`,          lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/politicas`,               lastModified: ahora, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   /* Páginas de categorías */

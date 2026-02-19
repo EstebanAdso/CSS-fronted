@@ -80,22 +80,9 @@ export default function AboutSection() {
                 Escribirnos
               </WhatsAppSelector>
             </div>
-          </div>
 
-          {/* Columna imagen / tarjeta visual */}
-          <div className="flex flex-col gap-6">
-            <div className="rounded-3xl overflow-hidden relative aspect-video border border-gray-200 shadow-md">
-              <Image
-                src="/imagenes/local.jpeg"
-                alt="Local CompuServicesSoft — CC San Agustín, Pasto"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-
-            {/* Redes sociales */}
-            <div className="rounded-2xl p-6 bg-gray-50 border border-gray-200">
+            {/* Síguenos */}
+            <div className="rounded-2xl p-6 bg-gray-50 border border-gray-200 mt-6">
               <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">Síguenos</p>
               <div className="flex flex-col gap-3">
                 <a
@@ -123,6 +110,20 @@ export default function AboutSection() {
                   <span className="text-sm font-medium">compuservicessoft@gmail.com</span>
                 </a>
               </div>
+            </div>
+          </div>
+
+          {/* Columna derecha: solo imagen */}
+          <div>
+            <div className="rounded-3xl overflow-hidden relative aspect-4/5 border border-gray-200 shadow-md">
+              <Image
+                src="/imagenes/local.jpeg"
+                alt="Local CompuServicesSoft — CC San Agustín, Pasto"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
             </div>
           </div>
         </div>

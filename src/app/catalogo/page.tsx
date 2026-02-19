@@ -117,11 +117,11 @@ export default async function CatalogoPage({
     : null;
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white flex flex-col">
       <Navbar tema="claro" />
 
       {/* Layout principal: sidebar + contenido */}
-      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[140px] lg:pt-18 pb-20">
+      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[140px] lg:pt-18 pb-20 flex-1">
         {/* En mobile: columna (filtros arriba, grid abajo). En desktop: fila (sidebar izq, grid der) */}
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
 

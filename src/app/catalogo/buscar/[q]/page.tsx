@@ -59,11 +59,11 @@ export default async function BuscarPage({ params, searchParams }: Props) {
   const baseUrl = urlBusqueda(termino);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white flex flex-col">
       <Navbar tema="claro" />
 
       {/* Layout: sidebar + grid */}
-      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
+      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20 flex-1">
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
 
           <CatalogoFiltros

@@ -29,14 +29,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = await resolverCategoria(slug);
   if (!cat) return { title: "Categoría | CompuServicesSoft" };
 
-  const titulo = `${cat.nombre} en Pasto | CompuServicesSoft`;
-  const descripcion = `Compra ${cat.nombre} en Pasto, Nariño. ${cat.descripcion ?? "Productos de calidad con garantía en CompuServicesSoft — CC San Agustín, Local 224A."}`;
+  const titulo = `${cat.nombre} en Pasto, Nariño | CompuServicesSoft`;
+  const descripcion = `Compra ${cat.nombre} en Pasto, Nariño al mejor precio. ${cat.descripcion ?? "Productos originales con garantía."} Visita CompuServicesSoft en el CC San Agustín, Local 224A.`;
   const canonical = `https://compuservicessoft.com${urlCategoriaFiltro(cat.nombre)}`;
+  const ogImage = "https://compuservicessoft.com/imagenes/local.jpeg";
 
   return {
     title: titulo,
     description: descripcion,
-    openGraph: { title: titulo, description: descripcion, url: canonical, type: "website" },
+    keywords: [
+      `${cat.nombre} Pasto`,
+      `${cat.nombre} Nariño`,
+      `${cat.nombre} Pasto Colombia`,
+      `comprar ${cat.nombre} Pasto`,
+      `${cat.nombre} precio Pasto`,
+      "CompuServicesSoft",
+      "tienda tecnología Pasto",
+      "CC San Agustín Pasto",
+    ],
+    openGraph: {
+      title: titulo,
+      description: descripcion,
+      url: canonical,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${cat.nombre} en Pasto — CompuServicesSoft` }],
+    },
     alternates: { canonical },
   };
 }
@@ -72,11 +89,11 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
   const baseUrl = categoriaActiva ? urlCategoriaFiltro(categoriaActiva.nombre) : undefined;
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white flex flex-col">
       <Navbar tema="claro" />
 
       {/* Layout: sidebar + grid */}
-      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
+      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20 flex-1">
         <div className="flex flex-col lg:flex-row gap-6 mt-0 lg:mt-4">
 
           <CatalogoFiltros

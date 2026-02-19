@@ -7,8 +7,7 @@ const links = [
   { label: "Catálogo de Productos", href: "/catalogo" },
   { label: "Arma tu PC", href: "/armar-pc-gamer" },
   { label: "Quiénes Somos", href: "/#about" },
-  { label: "Garantía de Productos", href: "/politicas" },
-  { label: "Políticas de Devolución", href: "/politicas" },
+  { label: "Garantía y Devoluciones", href: "/politicas" },
 ];
 
 const contactos = [

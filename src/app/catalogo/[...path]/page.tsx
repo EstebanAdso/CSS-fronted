@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!resultado) return { title: "Producto no encontrado | CompuServicesSoft" };
 
   const { producto } = resultado;
-  const titulo = `${producto.nombre} en Pasto | CompuServicesSoft`;
-  const descripcion = `Compra ${producto.nombre} en Pasto, Nariño. ${producto.descripcion} Disponible en CompuServicesSoft — CC San Agustín, Local 224A.`;
+  const titulo = `${producto.nombre} — ${producto.categoria.nombre} en Pasto | CompuServicesSoft`;
+  const descripcion = `Compra ${producto.nombre} en Pasto, Nariño al mejor precio. ${producto.descripcion ?? ""} Disponible en CompuServicesSoft, CC San Agustín Local 224A. ¡Pregunta por WhatsApp!`.trim();
   const imagen = resolverImagen(producto.imagen);
   const canonicalUrl = `https://compuservicessoft.com${urlProducto(producto.nombre, producto.categoria.nombre)}`;
 
@@ -71,19 +71,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: descripcion,
     keywords: [
       producto.nombre,
-      producto.categoria.nombre,
       `${producto.nombre} Pasto`,
+      `${producto.nombre} Nariño`,
+      `${producto.nombre} precio`,
+      `comprar ${producto.nombre} Pasto`,
+      producto.categoria.nombre,
       `${producto.categoria.nombre} Pasto`,
-      `comprar ${producto.nombre}`,
+      `${producto.categoria.nombre} Nariño`,
       "CompuServicesSoft",
-      "Pasto Nariño Colombia",
+      "tienda tecnología Pasto",
+      "CC San Agustín Pasto",
     ],
     openGraph: {
       title: titulo,
       description: descripcion,
       url: canonicalUrl,
       type: "website",
-      images: [{ url: imagen, alt: producto.nombre }],
+      images: [{ url: imagen, width: 800, height: 800, alt: `${producto.nombre} — CompuServicesSoft Pasto` }],
     },
     alternates: { canonical: canonicalUrl },
   };
@@ -117,7 +121,7 @@ export default async function CatalogoPathPage({ params }: Props) {
   );
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white flex flex-col">
       <Navbar tema="claro" />
 
       {/* Breadcrumb */}
@@ -136,7 +140,7 @@ export default async function CatalogoPathPage({ params }: Props) {
       </div>
 
       {/* Detalle */}
-      <section className="px-4 sm:px-6 lg:px-8 py-2 container-site">
+      <section className="px-4 sm:px-6 lg:px-8 py-2 container-site flex-1">
         <div className="grid md:grid-cols-2 gap-10 items-start">
 
           {/* Imagen */}
