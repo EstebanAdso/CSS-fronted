@@ -13,10 +13,10 @@ const categorias = [
   { nombre: "FUENTE DE PODER",    img: "/imagenes/categorias/IAFUENTE.webp" },
   { nombre: "COMPUTADOR",         img: "/imagenes/categorias/computador.jpg" },
   { nombre: "GRAFICA",            img: "/imagenes/categorias/IAGRAFICA.webp" },
-  { nombre: "MOUSE",              img: "/imagenes/categorias/mouseC.jfif" },
+  { nombre: "MOUSE",              img: "/imagenes/categorias/mouseC.png" },
   { nombre: "TECLADO",            img: "/imagenes/categorias/tecladoC.jpg" },
-  { nombre: "CONTROLES Y JUEGOS", img: "/imagenes/categorias/control.jfif" },
-  { nombre: "BASE REFRIGERANTE",  img: "/imagenes/categorias/baserefrigerante.jfif" },
+  { nombre: "CONTROLES Y JUEGOS", img: "/imagenes/categorias/control.png" },
+  { nombre: "BASE REFRIGERANTE",  img: "/imagenes/categorias/baserefrigerante.png" },
   { nombre: "MOTHERBOARD",        img: "/imagenes/categorias/IABOARD.webp" },
   { nombre: "PROCESADOR",         img: "/imagenes/categorias/IAPROCESADOR.webp" },
   { nombre: "DISIPADOR",          img: "/imagenes/categorias/disipador.jpeg" },
@@ -121,7 +121,7 @@ export default function CategoriasCarrusel() {
                     src={cat.img}
                     alt={NOMBRE_DISPLAY[cat.nombre] ?? cat.nombre}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, (max-width: 1536px) 16vw, 14vw"
                   />
                 </div>

@@ -168,7 +168,7 @@ export default async function CatalogoPage({
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 min-[370px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                 {productos.map((producto) => (
                   <ProductCard key={producto.id} producto={producto} />
                 ))}
