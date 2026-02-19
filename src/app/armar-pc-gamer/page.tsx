@@ -6,6 +6,8 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CotizadorPC from "@/components/CotizadorPC";
 import type { Producto } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Arma tu PC | CompuServicesSoft — Pasto, Nariño",
   description:
