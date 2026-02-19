@@ -110,15 +110,28 @@ export default function HeroSection() {
         <div className="flex flex-row gap-2 sm:gap-3 justify-center items-center mb-6">
           <Link
             href="/catalogo"
-            className="btn-gamer px-6 py-3 rounded-xl text-sm font-bold tracking-wide"
+            className="btn-gamer inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold tracking-wide"
           >
-            🛒 Ver Catálogo
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="8" x2="21" y1="6" y2="6" />
+              <line x1="8" x2="21" y1="12" y2="12" />
+              <line x1="8" x2="21" y1="18" y2="18" />
+              <line x1="3" x2="3.01" y1="6" y2="6" />
+              <line x1="3" x2="3.01" y1="12" y2="12" />
+              <line x1="3" x2="3.01" y1="18" y2="18" />
+            </svg>
+            Ver Catálogo
           </Link>
           <Link
             href="/armar-pc-gamer"
-            className="px-6 py-3 rounded-xl text-sm font-bold tracking-wide border border-accent/50 text-accent hover:bg-accent/10 hover:border-accent transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold tracking-wide border border-accent/50 text-accent hover:bg-accent/10 hover:border-accent transition-all duration-300"
           >
-            🖥️ Arma tu PC
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="20" height="14" x="2" y="3" rx="2" />
+              <line x1="8" x2="16" y1="21" y2="21" />
+              <line x1="12" x2="12" y1="17" y2="21" />
+            </svg>
+            Arma tu PC
           </Link>
         </div>
 

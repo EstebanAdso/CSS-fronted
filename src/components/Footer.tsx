@@ -75,9 +75,11 @@ export default function Footer() {
           {/* Columna 1: Marca */}
           <div className="lg:col-span-1 text-center sm:text-left">
             <div className="flex items-center gap-2 mb-3 justify-center sm:justify-start">
-              <div className="w-7 h-7 rounded-lg bg-linear-to-br from-primary to-primary-light flex items-center justify-center shrink-0">
-                <span className="text-white font-black text-xs">CS</span>
-              </div>
+              <img
+                src="/favicon/favicon-96x96.png"
+                alt="CompuServicesSoft logo"
+                className="w-8 h-8 rounded-lg shrink-0"
+              />
               <span className="font-black text-base tracking-tight leading-none">
                 <span className="text-white">Compu</span><span className="text-primary">Services</span><span className="text-white">Soft</span>
               </span>

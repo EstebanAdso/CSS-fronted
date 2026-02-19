@@ -2,9 +2,31 @@
 
 import WhatsAppSelector from "@/components/WhatsAppSelector";
 
+const WrenchIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  </svg>
+);
+
+const UserCheckIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <polyline points="16 11 18 13 22 9" />
+  </svg>
+);
+
+const MonitorIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="14" x="2" y="3" rx="2" />
+    <line x1="8" x2="16" y1="21" y2="21" />
+    <line x1="12" x2="12" y1="17" y2="21" />
+  </svg>
+);
+
 const servicios = [
   {
-    emoji: "🔧",
+    icon: <WrenchIcon />,
     titulo: "Servicio Técnico",
     color: "var(--color-primary)",
     items: [
@@ -18,7 +40,7 @@ const servicios = [
     desc: "Soluciones rápidas y efectivas para que tus equipos funcionen como nuevos.",
   },
   {
-    emoji: "🎯",
+    icon: <UserCheckIcon />,
     titulo: "Asesorías Personalizadas",
     color: "var(--color-primary)",
     items: [
@@ -32,7 +54,7 @@ const servicios = [
     desc: "Te guiamos para encontrar la mejor opción según tu presupuesto y necesidades.",
   },
   {
-    emoji: "🛒",
+    icon: <MonitorIcon />,
     titulo: "Venta de Componentes",
     color: "var(--color-primary)",
     items: [
@@ -73,24 +95,24 @@ export default function ServiciosSection() {
               key={srv.titulo}
               className="bg-white rounded-3xl p-8 flex flex-col gap-6 group border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200"
             >
-              {/* Icono */}
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl transition-all duration-300"
-                style={{
-                  background: `${srv.color}18`,
-                  border: `1px solid ${srv.color}44`,
-                  boxShadow: `0 0 0 0 ${srv.color}`,
-                }}
-              >
-                {srv.emoji}
-              </div>
-
-              {/* Título */}
-              <div>
-                <h3 className="text-xl font-black text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-200">
-                  {srv.titulo}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{srv.desc}</p>
+              {/* Icono + Título */}
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
+                  style={{
+                    background: `${srv.color}18`,
+                    border: `1px solid ${srv.color}44`,
+                    color: srv.color,
+                  }}
+                >
+                  {srv.icon}
+                </div>
+                <div>
+                  <h3 className="text-xl font-black text-gray-900 group-hover:text-gray-700 transition-colors duration-200">
+                    {srv.titulo}
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mt-1">{srv.desc}</p>
+                </div>
               </div>
 
               {/* Lista de items */}

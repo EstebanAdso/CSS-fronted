@@ -7,7 +7,6 @@ const pasos = [
   {
     nombre: "Procesador (CPU)",
     slug: "procesador",
-    emoji: "🧩",
     color: "var(--color-primary-light)",
     desc: "Punto de partida crucial. Tu elección del procesador determinará la compatibilidad de otros componentes. Elige según rendimiento, presupuesto y uso específico.",
     tip: "Intel o AMD — ambas son excelentes opciones según tu presupuesto.",
@@ -15,7 +14,6 @@ const pasos = [
   {
     nombre: "Tarjeta Madre",
     slug: "motherboard",
-    emoji: "🔧",
     color: "var(--color-primary)",
     desc: "Selecciona la placa madre 100% compatible con tu procesador. Verifica el socket, chipset y características. La motherboard es el corazón de tu sistema.",
     tip: "Asegúrate que el socket coincida con tu CPU (AM5, LGA1700, etc.).",
@@ -23,7 +21,6 @@ const pasos = [
   {
     nombre: "Memoria RAM",
     slug: "ram",
-    emoji: "🧠",
     color: "var(--color-accent)",
     desc: "Elige RAM compatible con tu placa madre. Presta atención a la velocidad, generación (DDR4/DDR5) y capacidad soportada. La RAM correcta optimiza el rendimiento.",
     tip: "Mínimo 16GB para gaming y trabajo profesional.",
@@ -31,7 +28,6 @@ const pasos = [
   {
     nombre: "Almacenamiento SSD/NVMe",
     slug: "ssd",
-    emoji: "💾",
     color: "var(--color-active)",
     desc: "Si tu placa madre soporta NVMe, es la mejor opción para disco principal. Velocidades superiores al SSD tradicional. Si no, un SSD SATA sigue siendo excelente.",
     tip: "NVMe M.2 para el SO, SSD SATA para almacenamiento adicional.",
@@ -39,7 +35,6 @@ const pasos = [
   {
     nombre: "Tarjeta Gráfica",
     slug: "grafica",
-    emoji: "🎮",
     color: "var(--color-accent-2)",
     desc: "Elige según tus necesidades gráficas. Verifica compatibilidad con la fuente de poder y placa madre. Las conexiones PCIe son fundamentales.",
     tip: "Para gaming 1080p: RTX 3060 o RX 6600 son excelentes opciones.",
@@ -47,7 +42,6 @@ const pasos = [
   {
     nombre: "Fuente de Poder",
     slug: "fuente-de-poder",
-    emoji: "🔌",
     color: "#ffd700",
     desc: "Componente crítico y a menudo subestimado. Invierte en una fuente de calidad con suficiente potencia y conexiones para todos tus componentes.",
     tip: "Calcula el consumo total y añade 20% de margen. Certificación 80+ recomendada.",
@@ -55,7 +49,6 @@ const pasos = [
   {
     nombre: "Monitor",
     slug: "monitor",
-    emoji: "🖥️",
     color: "var(--color-primary-lighter)",
     desc: "Elige según tu uso: resolución, tamaño y frecuencia de refresco. Para gaming: alta frecuencia. Para diseño: color y precisión IPS. Verifica conexiones HDMI/DisplayPort.",
     tip: "144Hz mínimo para gaming competitivo.",
@@ -104,9 +97,6 @@ export default function ArmarCarrusel() {
               {activo + 1}
             </div>
 
-            {/* Emoji grande */}
-            <div className="text-6xl mb-6 animate-float">{paso.emoji}</div>
-
             {/* Nombre */}
             <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">
               {paso.nombre}
@@ -153,7 +143,6 @@ export default function ArmarCarrusel() {
                   }`}>
                     {i + 1}
                   </span>
-                  <span className="text-lg shrink-0">{p.emoji}</span>
                   <span className={`font-semibold text-sm transition-colors duration-200 ${
                     i === activo ? "text-primary" : "text-gray-600"
                   }`}>
@@ -201,7 +190,7 @@ export default function ArmarCarrusel() {
             }} />
           <div className="relative z-10">
             <h3 className="text-2xl sm:text-3xl font-black text-white mb-4">
-              ¿Listo para armar tu PC? 😎
+              ¿Listo para armar tu PC?
             </h3>
             <p className="text-text-muted/80 mb-8 max-w-lg mx-auto">
               Usa nuestra herramienta de armado y elige las piezas disponibles en nuestro local en Pasto.
@@ -210,7 +199,10 @@ export default function ArmarCarrusel() {
               href="/armar"
               className="btn-gamer inline-flex items-center gap-2 px-10 py-4 rounded-xl font-bold text-base"
             >
-              🔧 Armar mi computadora
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+              Armar mi computadora
             </Link>
           </div>
         </div>
