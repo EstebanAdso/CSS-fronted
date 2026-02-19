@@ -45,13 +45,13 @@ export default async function ProductosDestacados() {
     <section className="pt-6 pb-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
       <div className="container-site">
         <div className="mb-10">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-2">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-2">
             — Productos —
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-gray-900">
-            Lo más <span className="text-[#8c52ff]">Destacado</span>
+            Lo más <span className="text-primary">Destacado</span>
           </h2>
-          <div className="w-12 h-1 bg-[#8c52ff] rounded-full mt-3" />
+          <div className="w-12 h-1 bg-primary rounded-full mt-3" />
         </div>
 
         {filas.map((fila) => (

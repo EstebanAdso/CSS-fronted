@@ -43,9 +43,9 @@ export default function PaginacionControles({
 
   const btnBase =
     "w-10 h-10 rounded-lg flex items-center justify-center text-sm font-semibold border transition-all duration-200";
-  const btnActivo = "bg-[#8c52ff] border-[#8c52ff] text-white";
+  const btnActivo = "bg-primary border-primary text-white";
   const btnInactivo =
-    "border-gray-200 text-gray-600 hover:border-[#8c52ff]/40 hover:text-[#8c52ff] bg-white";
+    "border-gray-200 text-gray-600 hover:border-primary/40 hover:text-primary bg-white";
   const btnDisabled =
     "border-gray-100 text-gray-300 cursor-not-allowed bg-white";
 
@@ -77,7 +77,7 @@ export default function PaginacionControles({
       {inicio > 1 && (
         <>
           <Link href={buildUrl(1, q, categoriaId, baseUrl)} className={`${btnBase} ${btnInactivo}`}>1</Link>
-          {inicio > 2 && <span className="text-[#d89fff]/40 px-1">…</span>}
+          {inicio > 2 && <span className="text-text-muted/40 px-1">…</span>}
         </>
       )}
 
@@ -96,7 +96,7 @@ export default function PaginacionControles({
       {/* Última página si no está en el rango */}
       {fin < totalPages && (
         <>
-          {fin < totalPages - 1 && <span className="text-[#d89fff]/40 px-1">…</span>}
+          {fin < totalPages - 1 && <span className="text-text-muted/40 px-1">…</span>}
           <Link href={buildUrl(totalPages, q, categoriaId, baseUrl)} className={`${btnBase} ${btnInactivo}`}>
             {totalPages}
           </Link>

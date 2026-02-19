@@ -73,7 +73,7 @@ export default async function ArmarPage() {
           <div className="mb-10 text-center">
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-3">
-              Arma tu <span className="text-[#8c52ff]">PC</span>
+              Arma tu <span className="text-primary">PC</span>
             </h1>
             <p className="text-gray-500 max-w-xl mx-auto">
               Selecciona cada componente y obtén tu cotización al instante.

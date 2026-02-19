@@ -55,11 +55,11 @@ export default function CatalogoFiltros({
               value={busqueda}
               onChange={(e) => setBusqueda(e.target.value)}
               placeholder="Buscar productos..."
-              className="w-full pl-9 pr-3 py-2.5 rounded-lg text-sm bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8c52ff]/50 focus:ring-1 focus:ring-[#8c52ff]/20 transition-colors"
+              className="w-full pl-9 pr-3 py-2.5 rounded-lg text-sm bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors"
             />
           </div>
           <button type="submit" disabled={isPending}
-            className="mt-2 w-full py-2 rounded-lg text-sm font-semibold bg-[#8c52ff] hover:bg-[#6a00bb] text-white transition-colors disabled:opacity-50">
+            className="mt-2 w-full py-2 rounded-lg text-sm font-semibold bg-primary hover:bg-primary-dark text-white transition-colors disabled:opacity-50">
             {isPending ? "Buscando..." : "Buscar"}
           </button>
         </form>
@@ -74,7 +74,7 @@ export default function CatalogoFiltros({
           onClick={() => handleCategoria(null)}
           className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
             !categoriaActivaId && !busquedaActual
-              ? "bg-[#8c52ff]/10 text-[#8c52ff] border-l-2 border-[#8c52ff] font-semibold"
+              ? "bg-primary/10 text-primary border-l-2 border-primary font-semibold"
               : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
           }`}
         >
@@ -90,7 +90,7 @@ export default function CatalogoFiltros({
             onClick={() => handleCategoria(cat)}
             className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
               categoriaActivaId === cat.id
-                ? "bg-[#8c52ff]/10 text-[#8c52ff] border-l-2 border-[#8c52ff] font-semibold"
+                ? "bg-primary/10 text-primary border-l-2 border-primary font-semibold"
                 : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
             }`}
           >
@@ -102,7 +102,7 @@ export default function CatalogoFiltros({
         {hayFiltro && (
           <button
             onClick={() => { setBusqueda(""); handleCategoria(null); }}
-            className="mt-3 text-xs text-gray-400 hover:text-[#8c52ff] transition-colors text-left px-3"
+            className="mt-3 text-xs text-gray-400 hover:text-primary transition-colors text-left px-3"
           >
             ✕ Limpiar filtro
           </button>

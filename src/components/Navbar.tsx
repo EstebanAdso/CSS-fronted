@@ -76,19 +76,19 @@ export default function Navbar({ tema = "oscuro" }: Props) {
   const headerBg = esClaro
     ? "bg-white border-b border-gray-200 shadow-sm"
     : scrolled || menuOpen
-    ? "bg-[#0a0010]/95 backdrop-blur-md shadow-[0_2px_20px_rgba(122,0,212,0.3)]"
+    ? "bg-background/95 backdrop-blur-md shadow-[0_2px_20px_rgba(122,0,212,0.3)]"
     : "bg-transparent";
 
   const linkColor = esClaro
-    ? "text-gray-900 hover:text-[#8c52ff]"
+    ? "text-gray-900 hover:text-primary"
     : "text-[#fff] hover:text-[#d89fff]";
 
   const logoTextColor = esClaro ? "text-gray-900" : "text-white";
-  const hamburgerColor = esClaro ? "bg-gray-700" : "bg-[#c060ff]";
-  const menuMobileBg = esClaro ? "bg-white border-t border-gray-100" : "border-t border-[rgba(160,32,240,0.2)]";
+  const hamburgerColor = esClaro ? "bg-gray-700" : "bg-primary-lighter";
+  const menuMobileBg = esClaro ? "bg-white border-t border-gray-100" : "border-t border-primary-light/20";
   const menuMobileLink = esClaro
-    ? "text-gray-700 hover:text-[#8c52ff] hover:bg-gray-50"
-    : "text-[#d89fff] hover:text-white hover:bg-[#1c0030]";
+    ? "text-gray-700 hover:text-primary hover:bg-gray-50"
+    : "text-text-muted hover:text-white hover:bg-surface";
 
   return (
     <>
@@ -105,7 +105,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
             />
             <span className="font-black text-lg tracking-tight">
               <span className={logoTextColor}>Compu</span>
-              <span className="text-[#8c52ff]">Services</span>
+              <span className="text-primary">Services</span>
               <span className={logoTextColor}>Soft</span>
             </span>
           </Link>
@@ -129,7 +129,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
                     className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 group ${linkColor}`}
                   >
                     {link.label}
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#8c52ff] group-hover:w-4/5 transition-all duration-300 rounded-full" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-4/5 transition-all duration-300 rounded-full" />
                   </Link>
                 )}
               </li>
@@ -139,14 +139,14 @@ export default function Navbar({ tema = "oscuro" }: Props) {
           {/* Botón Contáctanos desktop */}
           <button
             onClick={() => setModalOpen(true)}
-            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#8c52ff] hover:bg-[#7040dd] text-white transition-colors"
+            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-primary hover:bg-primary-dark text-white transition-colors"
           >
             Contáctanos
           </button>
 
           {/* Hamburguesa mobile */}
           <button
-            className={`lg:hidden flex flex-col gap-1.5 p-2 rounded-lg transition-colors ${esClaro ? "hover:bg-gray-100" : "hover:bg-[#1c0030]"}`}
+            className={`lg:hidden flex flex-col gap-1.5 p-2 rounded-lg transition-colors ${esClaro ? "hover:bg-gray-100" : "hover:bg-surface"}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menú"
           >
@@ -186,7 +186,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
               <li className="mt-2 px-4">
                 <button
                   onClick={() => { setMenuOpen(false); setModalOpen(true); }}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg text-sm font-semibold bg-[#8c52ff] hover:bg-[#7040dd] text-white transition-colors"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg text-sm font-semibold bg-primary hover:bg-primary-dark text-white transition-colors"
                 >
                   Contáctanos
                 </button>
@@ -209,7 +209,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="px-6 py-4 bg-[#8c52ff] flex items-center justify-between">
+          <div className="px-6 py-4 bg-primary flex items-center justify-between">
             <h4 className="text-white font-bold text-base">Nuestros Contactos</h4>
             <button onClick={() => setModalOpen(false)} className="text-white/70 hover:text-white transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,10 +229,10 @@ export default function Navbar({ tema = "oscuro" }: Props) {
                 className="flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-colors group"
                 onClick={() => setModalOpen(false)}
               >
-                <span className="text-[#8c52ff] shrink-0">{c.icon}</span>
+                <span className="text-primary shrink-0">{c.icon}</span>
                 <div>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">{c.label}</p>
-                  <p className="text-sm font-semibold text-gray-800 group-hover:text-[#8c52ff] transition-colors">{c.valor}</p>
+                  <p className="text-sm font-semibold text-gray-800 group-hover:text-primary transition-colors">{c.valor}</p>
                 </div>
               </a>
             ))}

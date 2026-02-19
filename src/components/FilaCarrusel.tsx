@@ -66,7 +66,7 @@ export default function FilaCarrusel({ titulo, lema, productos, urlVerTodos }: P
         <button
           onClick={() => scroll("left")}
           aria-label="Anterior"
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white border border-gray-200 hover:border-[#8c52ff] text-gray-400 hover:text-[#8c52ff] flex items-center justify-center transition-all duration-200 shadow-lg opacity-70 hover:opacity-100 hover:scale-110"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white border border-gray-200 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-all duration-200 shadow-lg opacity-70 hover:opacity-100 hover:scale-110"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -77,7 +77,7 @@ export default function FilaCarrusel({ titulo, lema, productos, urlVerTodos }: P
         <button
           onClick={() => scroll("right")}
           aria-label="Siguiente"
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white border border-gray-200 hover:border-[#8c52ff] text-gray-400 hover:text-[#8c52ff] flex items-center justify-center transition-all duration-200 shadow-lg opacity-70 hover:opacity-100 hover:scale-110"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white border border-gray-200 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-all duration-200 shadow-lg opacity-70 hover:opacity-100 hover:scale-110"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />

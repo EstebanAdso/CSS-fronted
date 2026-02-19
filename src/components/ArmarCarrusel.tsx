@@ -8,7 +8,7 @@ const pasos = [
     nombre: "Procesador (CPU)",
     slug: "procesador",
     emoji: "🧩",
-    color: "#a020f0",
+    color: "var(--color-primary-light)",
     desc: "Punto de partida crucial. Tu elección del procesador determinará la compatibilidad de otros componentes. Elige según rendimiento, presupuesto y uso específico.",
     tip: "Intel o AMD — ambas son excelentes opciones según tu presupuesto.",
   },
@@ -16,7 +16,7 @@ const pasos = [
     nombre: "Tarjeta Madre",
     slug: "motherboard",
     emoji: "🔧",
-    color: "#8c52ff",
+    color: "var(--color-primary)",
     desc: "Selecciona la placa madre 100% compatible con tu procesador. Verifica el socket, chipset y características. La motherboard es el corazón de tu sistema.",
     tip: "Asegúrate que el socket coincida con tu CPU (AM5, LGA1700, etc.).",
   },
@@ -24,7 +24,7 @@ const pasos = [
     nombre: "Memoria RAM",
     slug: "ram",
     emoji: "🧠",
-    color: "#00e5ff",
+    color: "var(--color-accent)",
     desc: "Elige RAM compatible con tu placa madre. Presta atención a la velocidad, generación (DDR4/DDR5) y capacidad soportada. La RAM correcta optimiza el rendimiento.",
     tip: "Mínimo 16GB para gaming y trabajo profesional.",
   },
@@ -32,7 +32,7 @@ const pasos = [
     nombre: "Almacenamiento SSD/NVMe",
     slug: "ssd",
     emoji: "💾",
-    color: "#39ff14",
+    color: "var(--color-active)",
     desc: "Si tu placa madre soporta NVMe, es la mejor opción para disco principal. Velocidades superiores al SSD tradicional. Si no, un SSD SATA sigue siendo excelente.",
     tip: "NVMe M.2 para el SO, SSD SATA para almacenamiento adicional.",
   },
@@ -40,7 +40,7 @@ const pasos = [
     nombre: "Tarjeta Gráfica",
     slug: "grafica",
     emoji: "🎮",
-    color: "#ff00aa",
+    color: "var(--color-accent-2)",
     desc: "Elige según tus necesidades gráficas. Verifica compatibilidad con la fuente de poder y placa madre. Las conexiones PCIe son fundamentales.",
     tip: "Para gaming 1080p: RTX 3060 o RX 6600 son excelentes opciones.",
   },
@@ -56,7 +56,7 @@ const pasos = [
     nombre: "Monitor",
     slug: "monitor",
     emoji: "🖥️",
-    color: "#c060ff",
+    color: "var(--color-primary-lighter)",
     desc: "Elige según tu uso: resolución, tamaño y frecuencia de refresco. Para gaming: alta frecuencia. Para diseño: color y precisión IPS. Verifica conexiones HDMI/DisplayPort.",
     tip: "144Hz mínimo para gaming competitivo.",
   },
@@ -76,14 +76,14 @@ export default function ArmarCarrusel() {
       <div className="container-site">
         {/* Encabezado */}
         <div className="text-center mb-14">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-3">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
             — Guía paso a paso —
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Cómo{" "}
-            <span className="text-[#8c52ff]">Armar tu PC</span>
+            <span className="text-primary">Armar tu PC</span>
           </h2>
-          <div className="w-16 h-1 bg-[#8c52ff] rounded-full mx-auto mb-4" />
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
           <p className="text-gray-500 max-w-xl mx-auto">
             Te guiamos en cada paso para que armes la máquina perfecta según tu presupuesto y necesidades.
           </p>
@@ -125,7 +125,7 @@ export default function ArmarCarrusel() {
             {/* Botón ir al catálogo */}
             <Link
               href={`/catalogo?categoria=${paso.slug}`}
-              className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl font-semibold text-sm bg-[#8c52ff] hover:bg-[#6a00bb] text-white transition-colors"
+              className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl font-semibold text-sm bg-primary hover:bg-primary-dark text-white transition-colors"
             >
               Ver {paso.nombre}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,23 +144,23 @@ export default function ArmarCarrusel() {
                   onClick={() => setActivo(i)}
                   className={`flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 border ${
                     i === activo
-                      ? "border-[#8c52ff] bg-[#8c52ff]/10"
-                      : "border-gray-200 bg-white hover:border-[#8c52ff]/40 hover:bg-[#8c52ff]/5"
+                      ? "border-primary bg-primary/10"
+                      : "border-gray-200 bg-white hover:border-primary/40 hover:bg-primary/5"
                   }`}
                 >
                   <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-black shrink-0 transition-all duration-300 ${
-                    i === activo ? "bg-[#8c52ff] text-white" : "bg-gray-100 text-gray-500"
+                    i === activo ? "bg-primary text-white" : "bg-gray-100 text-gray-500"
                   }`}>
                     {i + 1}
                   </span>
                   <span className="text-lg shrink-0">{p.emoji}</span>
                   <span className={`font-semibold text-sm transition-colors duration-200 ${
-                    i === activo ? "text-[#8c52ff]" : "text-gray-600"
+                    i === activo ? "text-primary" : "text-gray-600"
                   }`}>
                     {p.nombre}
                   </span>
                   {i === activo && (
-                    <svg className="w-4 h-4 text-[#8c52ff] ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-primary ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                     </svg>
                   )}
@@ -172,7 +172,7 @@ export default function ArmarCarrusel() {
             <div className="flex gap-3 mt-2">
               <button
                 onClick={anterior}
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-[rgba(160,32,240,0.3)] text-[#d89fff] hover:border-[#a020f0] hover:text-white hover:bg-[rgba(122,0,212,0.15)] transition-all duration-200 font-semibold text-sm"
+                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-primary-light/30 text-text-muted hover:border-primary-light hover:text-white hover:bg-bg-card/15 transition-all duration-200 font-semibold text-sm"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -194,16 +194,16 @@ export default function ArmarCarrusel() {
 
         {/* CTA armar PC */}
         <div className="mt-16 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden"
-          style={{ background: "linear-gradient(135deg, #1e0035, #2d0050, #1e0035)" }}>
+          style={{ background: "linear-gradient(135deg, var(--color-bg-card-dark), var(--color-bg-card), var(--color-bg-card-dark))" }}>
           <div className="absolute inset-0 opacity-20"
             style={{
-              backgroundImage: "radial-gradient(circle at 50% 50%, #8c52ff 0%, transparent 60%)",
+              backgroundImage: "radial-gradient(circle at 50% 50%, var(--color-primary) 0%, transparent 60%)",
             }} />
           <div className="relative z-10">
             <h3 className="text-2xl sm:text-3xl font-black text-white mb-4">
               ¿Listo para armar tu PC? 😎
             </h3>
-            <p className="text-[#d89fff]/80 mb-8 max-w-lg mx-auto">
+            <p className="text-text-muted/80 mb-8 max-w-lg mx-auto">
               Usa nuestra herramienta de armado y elige las piezas disponibles en nuestro local en Pasto.
             </p>
             <Link

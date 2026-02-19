@@ -1,63 +1,67 @@
 @import "tailwindcss";
 
-/* Paleta gamer morado - CompuServicesSoft */
+/* ─── Tokens de diseño — CompuServicesSoft ───────────────────────────────────
+   Para cambiar el color principal del sitio basta con editar --color-primary.
+   Los demás tokens se derivan de él o son independientes.
+   ─────────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #0a0010;
-  --foreground: #f0e6ff;
+  /* Fondo y texto base */
+  --color-bg:          #0a0010;   /* fondo principal de la app */
+  --color-text:        #f0e6ff;   /* texto sobre fondo oscuro */
 
-  /* Morados principales */
-  --gamer-purple-950: #0a0010;
-  --gamer-purple-900: #12001f;
-  --gamer-purple-800: #1e0035;
-  --gamer-purple-700: #2d0050;
-  --gamer-purple-600: #4a0080;
-  --gamer-purple-500: #8c52ff;
-  --gamer-purple-400: #a020f0;
-  --gamer-purple-300: #c060ff;
-  --gamer-purple-200: #d89fff;
-  --gamer-purple-100: #f0e0ff;
+  /* Color principal (morado) — cambia esto para rediseñar el sitio */
+  --color-primary:        #8c52ff;
+  --color-primary-light:  #a020f0;   /* hover de scrollbar, bordes activos */
+  --color-primary-lighter:#c060ff;   /* textos suaves, pasos secundarios */
+  --color-primary-dark:   #4a0080;   /* hover de botones, gradientes */
 
-  /* Acento cyan/eléctrico */
-  --gamer-cyan:  #00e5ff;
-  --gamer-cyan-dim: #00b8cc;
+  /* Fondos oscuros con tinte del color principal */
+  --color-bg-subtle:    #12001f;   /* track del scrollbar */
+  --color-bg-card:      #2d0050;   /* gradientes de secciones oscuras */
+  --color-bg-card-dark: #1e0035;   /* gradientes más profundos */
+  --color-surface:      #1c0030;   /* tooltip flotante, hover navbar mobile */
 
-  /* Acento rosa/magenta */
-  --gamer-pink: #ff00aa;
-  --gamer-pink-dim: #cc0088;
+  /* Texto secundario / muted */
+  --color-text-muted:   #d89fff;   /* subtítulos, descripciones en oscuro */
 
-  /* Acento verde neón */
-  --gamer-green: #39ff14;
+  /* Acentos */
+  --color-accent:       #00e5ff;   /* cyan — botón "Arma tu PC", orbe */
+  --color-accent-2:     #ff00aa;   /* rosa/magenta — orbe decorativo */
+  --color-active:       #39ff14;   /* verde neón — indicador "abierto" */
 
-  /* Grises oscuros con tinte morado */
-  --surface-1: #130020;
-  --surface-2: #1c0030;
-  --surface-3: #260040;
-  --border-glow: rgba(160, 32, 240, 0.4);
+  /* WhatsApp */
+  --color-whatsapp:     #25d366;
+  --color-whatsapp-hover: #1da851;
+
+  /* Oscuro neutro (footer, header del carrito) */
+  --color-dark:         #111111;
+
+  /* Borde con brillo (usado en .card-gamer) */
+  --color-border-glow:  rgba(160, 32, 240, 0.4);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Colores personalizados disponibles como clases Tailwind */
-  --color-gamer-950:   var(--gamer-purple-950);
-  --color-gamer-900:   var(--gamer-purple-900);
-  --color-gamer-800:   var(--gamer-purple-800);
-  --color-gamer-700:   var(--gamer-purple-700);
-  --color-gamer-600:   var(--gamer-purple-600);
-  --color-gamer-500:   var(--gamer-purple-500);
-  --color-gamer-400:   var(--gamer-purple-400);
-  --color-gamer-300:   var(--gamer-purple-300);
-  --color-gamer-200:   var(--gamer-purple-200);
-  --color-gamer-100:   var(--gamer-purple-100);
-  --color-gamer-cyan:  var(--gamer-cyan);
-  --color-gamer-pink:  var(--gamer-pink);
-  --color-gamer-green: var(--gamer-green);
-  --color-surface-1:   var(--surface-1);
-  --color-surface-2:   var(--surface-2);
-  --color-surface-3:   var(--surface-3);
+  /* Clases Tailwind disponibles: bg-primary, text-primary, border-primary, etc. */
+  --color-primary:         var(--color-primary);
+  --color-primary-light:   var(--color-primary-light);
+  --color-primary-lighter: var(--color-primary-lighter);
+  --color-primary-dark:    var(--color-primary-dark);
+  --color-bg-subtle:       var(--color-bg-subtle);
+  --color-bg-card:         var(--color-bg-card);
+  --color-bg-card-dark:    var(--color-bg-card-dark);
+  --color-surface:         var(--color-surface);
+  --color-text-muted:      var(--color-text-muted);
+  --color-accent:          var(--color-accent);
+  --color-accent-2:        var(--color-accent-2);
+  --color-active:          var(--color-active);
+  --color-whatsapp:        var(--color-whatsapp);
+  --color-whatsapp-hover:  var(--color-whatsapp-hover);
+  --color-dark:            var(--color-dark);
 
   /* Ancho máximo del sitio */
   --width-site: 1624px;
@@ -69,48 +73,42 @@ section[id], div[id] {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-geist-sans), 'Montserrat', Arial, sans-serif;
 }
 
-/* Scrollbar gamer */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--gamer-purple-900);
+  background: var(--color-bg-subtle);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--gamer-purple-500);
+  background: var(--color-primary);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gamer-purple-400);
+  background: var(--color-primary-light);
 }
 
 /* Animación brillo de borde */
 @keyframes borderGlow {
-  0%, 100% { box-shadow: 0 0 8px var(--gamer-purple-500), 0 0 20px rgba(122,0,212,0.3); }
-  50%       { box-shadow: 0 0 16px var(--gamer-purple-400), 0 0 40px rgba(160,32,240,0.5); }
+  0%, 100% { box-shadow: 0 0 8px var(--color-primary), 0 0 20px rgba(122,0,212,0.3); }
+  50%       { box-shadow: 0 0 16px var(--color-primary-light), 0 0 40px rgba(160,32,240,0.5); }
 }
 
 /* Animación texto brillante */
 @keyframes textGlow {
-  0%, 100% { text-shadow: 0 0 10px var(--gamer-cyan), 0 0 20px var(--gamer-cyan); }
-  50%       { text-shadow: 0 0 20px var(--gamer-cyan), 0 0 40px var(--gamer-cyan), 0 0 60px var(--gamer-cyan); }
+  0%, 100% { text-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent); }
+  50%       { text-shadow: 0 0 20px var(--color-accent), 0 0 40px var(--color-accent), 0 0 60px var(--color-accent); }
 }
 
 /* Animación float */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-8px); }
-}
-
-/* Animación scanline sutil */
-@keyframes scanline {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
 }
 
 /* Animación partículas de fondo */
@@ -124,16 +122,16 @@ body {
 .animate-float       { animation: float 3s ease-in-out infinite; }
 .animate-pulse-glow  { animation: pulse-glow 3s ease-in-out infinite; }
 
-/* Gradiente de texto gamer */
+/* Gradiente de texto */
 .text-gradient-gamer {
-  background: linear-gradient(135deg, var(--gamer-purple-300), var(--gamer-cyan), var(--gamer-pink));
+  background: linear-gradient(135deg, var(--color-primary-lighter), var(--color-accent), var(--color-accent-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, var(--gamer-purple-200), var(--gamer-purple-400));
+  background: linear-gradient(135deg, var(--color-text-muted), var(--color-primary-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -141,20 +139,20 @@ body {
 
 /* Tarjeta con borde brillante */
 .card-gamer {
-  background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
-  border: 1px solid var(--border-glow);
+  background: linear-gradient(135deg, var(--color-surface), var(--color-bg-card));
+  border: 1px solid var(--color-border-glow);
   transition: all 0.3s ease;
 }
 .card-gamer:hover {
-  border-color: var(--gamer-purple-400);
+  border-color: var(--color-primary-light);
   box-shadow: 0 0 20px rgba(160,32,240,0.4), 0 8px 32px rgba(0,0,0,0.5);
   transform: translateY(-4px);
 }
 
-/* Botón gamer primario */
+/* Botón primario */
 .btn-gamer {
-  background: linear-gradient(135deg, var(--gamer-purple-600), var(--gamer-purple-500));
-  border: 1px solid var(--gamer-purple-400);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  border: 1px solid var(--color-primary-light);
   color: white;
   transition: all 0.3s ease;
   position: relative;
@@ -177,7 +175,7 @@ body {
 /* Línea decorativa neón */
 .neon-line {
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gamer-purple-400), var(--gamer-cyan), var(--gamer-purple-400), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-primary-light), var(--color-accent), var(--color-primary-light), transparent);
 }
 
 /* Contenedor principal responsive */

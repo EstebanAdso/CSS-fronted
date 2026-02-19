@@ -12,14 +12,14 @@ export default function AboutSection() {
 
           {/* Columna texto */}
           <div>
-            <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-3">
+            <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
               — Nosotros —
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
               ¿Quiénes{" "}
-              <span className="text-[#8c52ff]">Somos?</span>
+              <span className="text-primary">Somos?</span>
             </h2>
-            <div className="w-16 h-1 bg-[#8c52ff] rounded-full mb-8" />
+            <div className="w-16 h-1 bg-primary rounded-full mb-8" />
 
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>

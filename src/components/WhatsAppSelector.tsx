@@ -69,7 +69,7 @@ export default function WhatsAppSelector({ mensaje = "Hola%20vengo%20de%20la%20p
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm font-semibold text-gray-800"
               >
-                <span className="text-[#25d366]">{WSP_ICON}</span>
+                <span className="text-whatsapp">{WSP_ICON}</span>
                 {n.label}
               </a>
             ))}

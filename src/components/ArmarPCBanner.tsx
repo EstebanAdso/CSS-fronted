@@ -13,7 +13,7 @@ export default function ArmarPCBanner() {
   return (
     <section
       className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #5c00a0 0%, #8c52ff 50%, #5c00a0 100%)" }}
+      style={{ background: "linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%)" }}
     >
       {/* Decoración de fondo */}
       <div className="absolute inset-0 pointer-events-none">
@@ -42,7 +42,7 @@ export default function ArmarPCBanner() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
                 href="/armar-pc-gamer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-white hover:bg-gray-100 text-[#8c52ff] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-white hover:bg-gray-100 text-primary transition-colors"
               >
                 🖥️ Armar mi PC
               </Link>

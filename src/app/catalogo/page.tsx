@@ -121,7 +121,7 @@ export default async function CatalogoPage({
       <Navbar tema="claro" />
 
       {/* Layout principal: sidebar + contenido */}
-      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20">
+      <div className="container-site px-4 sm:px-6 lg:px-8 pt-[140px] lg:pt-18 pb-20">
         {/* En mobile: columna (filtros arriba, grid abajo). En desktop: fila (sidebar izq, grid der) */}
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
 
@@ -140,7 +140,7 @@ export default async function CatalogoPage({
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
               <h1 className="text-xl sm:text-2xl font-black text-gray-900">
                 {q
-                  ? <><span className="text-[#8c52ff]">"{q}"</span> — resultados</>
+                  ? <><span className="text-primary">"{q}"</span> — resultados</>
                   : categoriaActiva
                   ? categoriaActiva.nombre
                   : "Catálogo de Productos"}

@@ -78,7 +78,7 @@ export default async function BuscarPage({ params, searchParams }: Props) {
             {/* Título SEO dentro del área de productos */}
             <h1 className="text-xl sm:text-2xl font-black text-gray-900 mb-4">
               Resultados para{" "}
-              <span className="text-[#8c52ff]">"{termino}"</span>
+              <span className="text-primary">"{termino}"</span>
               {totalElements > 0 && (
                 <span className="ml-2 text-sm font-normal text-gray-400">{totalElements} producto{totalElements !== 1 ? "s" : ""}</span>
               )}

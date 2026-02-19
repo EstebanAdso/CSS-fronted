@@ -67,7 +67,7 @@ const contactos = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] pt-14 pb-8 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-dark pt-14 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="container-site">
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -75,18 +75,18 @@ export default function Footer() {
           {/* Columna 1: Marca */}
           <div className="lg:col-span-1 text-center sm:text-left">
             <div className="flex items-center gap-2 mb-3 justify-center sm:justify-start">
-              <div className="w-7 h-7 rounded-lg bg-linear-to-br from-[#8c52ff] to-[#a020f0] flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-linear-to-br from-primary to-primary-light flex items-center justify-center shrink-0">
                 <span className="text-white font-black text-xs">CS</span>
               </div>
               <span className="font-black text-base tracking-tight leading-none">
-                <span className="text-white">Compu</span><span className="text-[#8c52ff]">Services</span><span className="text-white">Soft</span>
+                <span className="text-white">Compu</span><span className="text-primary">Services</span><span className="text-white">Soft</span>
               </span>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed mb-4 max-w-[260px] mx-auto sm:mx-0">
               Tu tienda de tecnología en Pasto, Nariño. Componentes, armado de PCs y servicio técnico.
             </p>
             <div className="flex items-center gap-2 text-xs text-gray-400 justify-center sm:justify-start">
-              <span className="w-2 h-2 rounded-full bg-[#39ff14] animate-pulse shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-active animate-pulse shrink-0" />
               <span>Abierto: Lun–Sáb · 10am – 7pm</span>
             </div>
           </div>

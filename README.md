@@ -168,6 +168,63 @@ public/
 
 ---
 
+## Tokens de diseño (variables CSS)
+
+Definidos en `src/app/globals.css` bajo `:root`. Para cambiar el color principal del sitio basta con editar `--color-primary`.
+
+### Colores principales
+
+| Variable | Valor | Uso |
+|---|---|---|
+| `--color-primary` | `#8c52ff` | Color principal del sitio (morado) |
+| `--color-primary-light` | `#a020f0` | Hover de scrollbar, bordes activos |
+| `--color-primary-lighter` | `#c060ff` | Textos suaves, pasos secundarios |
+| `--color-primary-dark` | `#4a0080` | Hover de botones, gradientes |
+
+### Fondos
+
+| Variable | Valor | Uso |
+|---|---|---|
+| `--color-bg` | `#0a0010` | Fondo principal de la app |
+| `--color-bg-subtle` | `#12001f` | Track del scrollbar |
+| `--color-bg-card` | `#2d0050` | Gradientes de secciones oscuras |
+| `--color-bg-card-dark` | `#1e0035` | Gradientes más profundos |
+| `--color-surface` | `#1c0030` | Tooltip flotante, hover navbar mobile |
+| `--color-dark` | `#111111` | Footer, header del carrito |
+
+### Texto
+
+| Variable | Valor | Uso |
+|---|---|---|
+| `--color-text` | `#f0e6ff` | Texto sobre fondo oscuro |
+| `--color-text-muted` | `#d89fff` | Subtítulos, descripciones en oscuro |
+
+### Acentos y funcionales
+
+| Variable | Valor | Uso |
+|---|---|---|
+| `--color-accent` | `#00e5ff` | Cyan — botón "Arma tu PC", orbe |
+| `--color-accent-2` | `#ff00aa` | Rosa/magenta — orbe decorativo |
+| `--color-active` | `#39ff14` | Verde neón — indicador "abierto" |
+| `--color-whatsapp` | `#25d366` | Botones de WhatsApp |
+| `--color-whatsapp-hover` | `#1da851` | Hover de botones de WhatsApp |
+
+### Clases Tailwind generadas
+
+Todos los tokens anteriores están disponibles como clases Tailwind (via `@theme inline`):
+
+```
+bg-primary        text-primary        border-primary
+bg-primary-dark   text-primary-dark
+bg-primary-light  text-primary-light
+bg-surface        text-text-muted
+bg-dark           bg-active
+bg-whatsapp       hover:bg-whatsapp-hover
+bg-accent         text-accent
+```
+
+---
+
 ## Notas de Tailwind v4
 
 - Usar `bg-linear-to-br` (no `bg-gradient-to-br`)

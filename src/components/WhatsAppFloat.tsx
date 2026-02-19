@@ -48,7 +48,7 @@ export default function WhatsAppFloat() {
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm font-semibold text-gray-800"
               >
-                <span className="text-[#25d366]">{WSP_ICON}</span>
+                <span className="text-whatsapp">{WSP_ICON}</span>
                 {n.label}
               </a>
             ))}
@@ -67,7 +67,7 @@ export default function WhatsAppFloat() {
         >
           {/* Tooltip */}
           <span
-            className={`bg-[#1c0030] border border-[rgba(160,32,240,0.4)] text-[#d89fff] text-sm font-medium px-4 py-2 rounded-xl whitespace-nowrap transition-all duration-300 ${
+            className={`bg-surface border border-primary-light/40 text-text-muted text-sm font-medium px-4 py-2 rounded-xl whitespace-nowrap transition-all duration-300 ${
               hover && !open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"
             }`}
           >
@@ -78,7 +78,7 @@ export default function WhatsAppFloat() {
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300"
             style={{
-              background: "linear-gradient(135deg, #25d366, #128c7e)",
+              background: "linear-gradient(135deg, var(--color-whatsapp), #128c7e)",
               boxShadow: hover
                 ? "0 0 0 4px rgba(37,211,102,0.3), 0 8px 24px rgba(37,211,102,0.4)"
                 : "0 4px 16px rgba(37,211,102,0.3)",
@@ -94,7 +94,7 @@ export default function WhatsAppFloat() {
         {/* Pulso animado */}
         <span
           className="absolute right-0 bottom-0 w-14 h-14 rounded-full animate-ping opacity-30 pointer-events-none"
-          style={{ background: "#25d366" }}
+          style={{ background: "var(--color-whatsapp)" }}
         />
       </div>
     </div>

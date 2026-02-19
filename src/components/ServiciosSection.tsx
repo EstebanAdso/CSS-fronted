@@ -6,7 +6,7 @@ const servicios = [
   {
     emoji: "🔧",
     titulo: "Servicio Técnico",
-    color: "#8c52ff",
+    color: "var(--color-primary)",
     items: [
       "Reparación de computadoras y celulares",
       "Cambio de glass y display",
@@ -20,7 +20,7 @@ const servicios = [
   {
     emoji: "🎯",
     titulo: "Asesorías Personalizadas",
-    color: "#8c52ff",
+    color: "var(--color-primary)",
     items: [
       "Asesoría para compra de componentes",
       "Selección según presupuesto",
@@ -34,7 +34,7 @@ const servicios = [
   {
     emoji: "🛒",
     titulo: "Venta de Componentes",
-    color: "#8c52ff",
+    color: "var(--color-primary)",
     items: [
       "SSD y NVMe de última generación",
       "Memorias RAM DDR4/DDR5",
@@ -53,14 +53,14 @@ export default function ServiciosSection() {
       <div className="container-site">
         {/* Encabezado */}
         <div className="text-center mb-14">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-3">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
             — Lo que hacemos —
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Nuestros{" "}
-            <span className="text-[#8c52ff]">Servicios</span>
+            <span className="text-primary">Servicios</span>
           </h2>
-          <div className="w-16 h-1 bg-[#8c52ff] rounded-full mx-auto mb-4" />
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
           <p className="text-gray-500 max-w-xl mx-auto">
             Más que una tienda — somos tu aliado tecnológico en Pasto, Nariño.
           </p>

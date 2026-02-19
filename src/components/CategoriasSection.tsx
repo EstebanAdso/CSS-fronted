@@ -27,14 +27,14 @@ export default function CategoriasSection() {
       <div className="container-site">
         {/* Encabezado */}
         <div className="text-center mb-14">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8c52ff] mb-3">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
             — Catálogo —
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Categorías{" "}
-            <span className="text-[#8c52ff]">Destacadas</span>
+            <span className="text-primary">Destacadas</span>
           </h2>
-          <div className="w-16 h-1 bg-[#8c52ff] rounded-full mx-auto mb-4" />
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
           <p className="text-gray-500 max-w-xl mx-auto">
             Todo lo que necesitas para tu PC en un solo lugar. Disponible en nuestro local en Pasto, Nariño.
           </p>
@@ -46,7 +46,7 @@ export default function CategoriasSection() {
             <Link
               key={cat.nombre}
               href={urlCategoria(cat.nombre)}
-              className="group flex flex-col rounded-2xl border border-gray-200 bg-white hover:border-[#8c52ff]/40 hover:shadow-md transition-all duration-200 overflow-hidden"
+              className="group flex flex-col rounded-2xl border border-gray-200 bg-white hover:border-primary/40 hover:shadow-md transition-all duration-200 overflow-hidden"
             >
               {/* Imagen */}
               <div className="relative w-full aspect-video bg-gray-50 overflow-hidden">
@@ -61,13 +61,13 @@ export default function CategoriasSection() {
 
               {/* Info */}
               <div className="p-4 flex flex-col gap-1.5">
-                <h3 className="text-sm font-bold text-gray-800 leading-tight group-hover:text-[#8c52ff] transition-colors duration-200">
+                <h3 className="text-sm font-bold text-gray-800 leading-tight group-hover:text-primary transition-colors duration-200">
                   {cat.nombre}
                 </h3>
                 <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
                   {cat.desc}
                 </p>
-                <span className="text-xs text-[#8c52ff] font-semibold flex items-center gap-1 mt-1">
+                <span className="text-xs text-primary font-semibold flex items-center gap-1 mt-1">
                   Ver productos
                   <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
@@ -82,7 +82,7 @@ export default function CategoriasSection() {
         <div className="text-center mt-12">
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-[#8c52ff] hover:bg-[#6a00bb] text-white transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-primary hover:bg-primary-dark text-white transition-colors"
           >
             Ver catálogo completo
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
