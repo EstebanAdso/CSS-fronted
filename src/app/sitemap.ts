@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { getCategorias, getProductos } from "@/lib/api";
 import { urlProducto, urlCategoria } from "@/lib/utils";
 
+// esto indica a next.js que debe generar el sitemap en cada request
+export const dynamic = "force-dynamic";
+
 const BASE = "https://compuservicessoft.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
