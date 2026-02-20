@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/armar",
+        destination: "/armar-pc-gamer",
+        permanent: true,
+      },
+      {
         source: "/:path*.html",
         destination: "/:path*",
         permanent: true,
