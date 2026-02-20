@@ -120,8 +120,37 @@ export default async function CatalogoPathPage({ params }: Props) {
     `Hola, vengo de la página CompuServicesSoft. Me interesa: ${producto.nombre}. ¿Está disponible?`
   );
 
+  /* Schema.org Product para Google */
+  const schemaProduct = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: producto.nombre,
+    description: producto.descripcion,
+    image: imagenSrc,
+    brand: {
+      "@type": "Brand",
+      name: "CompuServicesSoft",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://compuservicessoft.com${urlProducto(producto.nombre, producto.categoria.nombre)}`,
+      priceCurrency: "COP",
+      price: producto.precioVendido,
+      availability: disponible ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      seller: {
+        "@type": "Organization",
+        name: "CompuServicesSoft",
+      },
+    },
+    category: producto.categoria.nombre,
+  };
+
   return (
     <main className="min-h-screen bg-white flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaProduct) }}
+      />
       <Navbar tema="claro" />
 
       {/* Breadcrumb */}

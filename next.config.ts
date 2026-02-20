@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/armar.html",
+        destination: "/armar-pc-gamer",
+        permanent: true,
+      },
+      {
         source: "/:path*.html",
         destination: "/:path*",
         permanent: true,

@@ -14,31 +14,132 @@ export const metadata: Metadata = {
   description:
     "CompuServicesSoft en Pasto, Nariño: compra SSD, RAM, tarjetas gráficas, procesadores, monitores y periféricos. Armado de PCs gamer y servicio técnico especializado. CC San Agustín Local 224A. ¡Envíos y atención personalizada!",
   keywords: [
+    /* Productos específicos + Pasto */
     "SSD Pasto",
     "SSD Nariño",
     "RAM Pasto",
+    "RAM DDR4 Pasto",
+    "RAM DDR5 Pasto",
     "tarjeta gráfica Pasto",
     "GPU Pasto",
     "procesador Pasto",
+    "procesador Intel Pasto",
+    "procesador AMD Pasto",
     "monitor Pasto",
+    "monitor gamer Pasto",
     "NVMe Pasto",
+    "SSD NVMe Pasto",
     "motherboard Pasto",
+    "board Pasto",
     "fuente de poder Pasto",
-    "armar PC Pasto",
+    "disco duro Pasto",
+    "disco SSD Pasto",
+    "memoria RAM Pasto",
+    "tarjeta de video Pasto",
+    
+    /* Búsquedas long-tail - Donde comprar */
+    "donde comprar RAM en Pasto",
+    "donde comprar SSD en Pasto",
+    "donde comprar GPU en Pasto",
+    "donde comprar componentes PC Pasto",
+    "donde armar PC en Pasto",
+    "donde venden procesadores en Pasto",
+    "donde comprar tarjeta gráfica Pasto",
+    
+    /* Mejor tienda / comparativas */
+    "mejor tienda computadores Pasto",
+    "mejor tienda tecnología Pasto",
+    "mejores precios componentes Pasto",
+    "tienda confiable computadores Pasto",
+    "mejor lugar comprar PC Pasto",
+    
+    /* Gaming específico */
+    "componentes gaming Pasto",
     "PC gamer Pasto",
-    "computador Pasto",
+    "armar PC gamer Pasto",
+    "armar computador gamer Pasto",
+    "componentes PC gamer Pasto",
+    "tarjeta gráfica gaming Pasto",
+    "monitor gaming Pasto",
+    "periféricos gaming Pasto",
+    "teclado gaming Pasto",
+    "mouse gaming Pasto",
+    
+    /* Armado de PC */
+    "armar PC Pasto",
+    "armar computador Pasto",
+    "armado de PC Pasto",
+    "cotizar PC Pasto",
+    "ensamblar computador Pasto",
+    "configurar PC Pasto",
+    
+    /* Venta de componentes */
     "venta componentes computador Pasto",
+    "venta tarjetas gráficas Pasto",
+    "venta RAM Pasto",
+    "venta SSD Pasto",
+    "venta procesadores Pasto",
+    "venta componentes PC Pasto Nariño",
+    
+    /* Tienda + ubicación */
+    "tienda computadores Pasto",
+    "tienda tecnología Pasto",
+    "tienda componentes PC Pasto",
     "tienda tecnología Pasto Nariño",
+    "tienda PC gamer Pasto",
+    "CC San Agustín Pasto tecnología",
+    "tienda centro Pasto computadores",
+    
+    /* Servicios técnicos */
     "servicio técnico computadores Pasto",
     "mantenimiento computadores Pasto",
     "reparación computadores Pasto",
+    "reparación PC Pasto",
+    "mantenimiento PC Pasto",
+    "formateo computador Pasto",
+    "instalación Windows Pasto",
     "instalación sistema operativo Pasto",
+    "limpieza computador Pasto",
+    "cambio pasta térmica Pasto",
+    
+    /* Marcas + Pasto */
+    "Intel Pasto",
+    "AMD Pasto",
+    "NVIDIA Pasto",
+    "Kingston RAM Pasto",
+    "Corsair Pasto",
+    "ASUS Pasto",
+    "MSI Pasto",
+    "Gigabyte Pasto",
+    
+    /* Precios */
+    "precio RAM Pasto",
+    "precio SSD Pasto",
+    "precio tarjeta gráfica Pasto",
+    "precio armar PC Pasto",
+    "precios componentes Pasto",
+    "computadores económicos Pasto",
+    
+    /* Nariño específico */
+    "componentes PC Nariño",
+    "computadores Nariño",
+    "tecnología Nariño",
+    "SSD Nariño Colombia",
+    
+    /* Marca */
     "CompuServicesSoft",
-    "CC San Agustín Pasto tecnología",
-    "periféricos gaming Pasto",
-    "teclado mouse gaming Pasto",
+    "CompuServicesSoft Pasto",
+    
+    /* Generales tecnología */
+    "computador Pasto",
+    "PC Pasto",
+    "laptop Pasto",
+    "notebook Pasto",
+    "periféricos Pasto",
+    "accesorios PC Pasto",
     "disco duro SSD Pasto Colombia",
-    "componentes PC Nariño Colombia",
+    "componentes originales Pasto",
+    "garantía componentes Pasto",
   ],
   authors: [{ name: "CompuServicesSoft - Carlos Esteban Trujillo Paz" }],
   creator: "CompuServicesSoft",
