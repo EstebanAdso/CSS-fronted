@@ -1,5 +1,5 @@
 {
-  "name": "CompuServicesSoft, Venta de componentes.",
+  "name": "CompuServicesSoft — Componentes de Computador Pasto",
   "short_name": "CompuServicesSoft",
   "icons": [
     {
@@ -18,6 +18,9 @@
   "theme_color": "#8c52ff",
   "background_color": "#0a0010",
   "display": "standalone",
-  "description": "Tu tienda de componentes de computación en Pasto, Nariño",
-  "start_url": "/"
+  "description": "Tienda de componentes de computador, periféricos y servicio técnico en Pasto, Nariño. SSD, RAM, tarjetas gráficas, procesadores y más en CC San Agustín local 224A.",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "es-CO",
+  "dir": "ltr"
 }

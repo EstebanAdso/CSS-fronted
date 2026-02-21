@@ -4,12 +4,36 @@ import FilaCarrusel from "@/components/FilaCarrusel";
 import type { Producto } from "@/types";
 
 const FILAS = [
-  { slug: "ssd",             titulo: "SSD",               lema: "Pon veloz tu equipo con nuestros SSD — más rápido, más potente" },
-  { slug: "procesador",      titulo: "Procesadores",      lema: "El cerebro de tu PC — rendimiento sin límites" },
-  { slug: "m2",              titulo: "M.2 NVMe",          lema: "Velocidad extrema para los que no esperan" },
-  { slug: "motherboard",     titulo: "Motherboards",      lema: "La base que lo conecta todo — elige bien" },
-  { slug: "fuente-de-poder", titulo: "Fuentes de Poder",  lema: "Energía estable para que nada falle" },
-  { slug: "grafica",         titulo: "Tarjetas Gráficas", lema: "Lleva tus gráficos al siguiente nivel" },
+  {
+    slug: "ssd",
+    titulo: "SSD",
+    lema: "Pon veloz tu equipo con nuestros SSD — más rápido, más potente",
+  },
+  {
+    slug: "procesador",
+    titulo: "Procesadores",
+    lema: "El cerebro de tu PC — rendimiento sin límites",
+  },
+  {
+    slug: "m2",
+    titulo: "M.2 NVMe",
+    lema: "Velocidad extrema para los que no esperan",
+  },
+  {
+    slug: "motherboard",
+    titulo: "Motherboards",
+    lema: "La base que lo conecta todo — elige bien",
+  },
+  {
+    slug: "fuente-de-poder",
+    titulo: "Fuentes de Poder",
+    lema: "Energía estable para que nada falle",
+  },
+  {
+    slug: "grafica",
+    titulo: "Tarjetas Gráficas",
+    lema: "Lleva tus gráficos al siguiente nivel",
+  },
 ];
 
 export default async function ProductosDestacados() {
@@ -28,16 +52,23 @@ export default async function ProductosDestacados() {
         if (!cat) return null;
         const data = await getProductosPorCategoria(cat.id, 0, 12);
         if (!data.content.length) return null;
-        return { ...fila, productos: data.content, urlVerTodos: urlCategoriaFiltro(cat.nombre) };
+        return {
+          ...fila,
+          productos: data.content,
+          urlVerTodos: urlCategoriaFiltro(cat.nombre),
+        };
       } catch {
         return null;
       }
-    })
+    }),
   );
 
   const filas = resultados.filter(Boolean) as Array<{
-    slug: string; titulo: string; lema: string;
-    productos: Producto[]; urlVerTodos: string;
+    slug: string;
+    titulo: string;
+    lema: string;
+    productos: Producto[];
+    urlVerTodos: string;
   }>;
 
   if (filas.length === 0) return null;
@@ -50,7 +81,7 @@ export default async function ProductosDestacados() {
             — Productos —
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-gray-900">
-            Lo más <span className="text-primary">Destacado</span>
+            Lo más <span className="text-primary">Destacado</span> en Pasto
           </h2>
           <div className="w-12 h-1 bg-primary rounded-full mt-3" />
         </div>

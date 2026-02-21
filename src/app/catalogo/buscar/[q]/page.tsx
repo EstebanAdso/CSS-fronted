@@ -19,14 +19,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { q } = await params;
   /* Restaura el término legible desde el slug (guiones → espacios) */
   const termino = q.replace(/-/g, " ");
-  const titulo = `"${termino}" — Búsqueda | CompuServicesSoft Pasto`;
-  const descripcion = `Resultados para "${termino}" en CompuServicesSoft. Componentes de cómputo en Pasto, Nariño, Colombia.`;
+  const titulo = `${termino} en Pasto — Búsqueda | CompuServicesSoft Nariño`;
+  const descripcion = `Resultados de búsqueda para "${termino}" en Pasto, Nariño. Encuentra ${termino} y más componentes de computador en CompuServicesSoft. Tienda en CC San Agustín Local 224A, Pasto.`;
   const canonical = `https://compuservicessoft.com${urlBusqueda(termino)}`;
 
   return {
     title: titulo,
     description: descripcion,
-    openGraph: { title: titulo, description: descripcion, url: canonical, type: "website" },
+    keywords: [
+      termino,
+      `${termino} Pasto`,
+      `${termino} Nariño`,
+      `comprar ${termino} Pasto`,
+      `${termino} precio Pasto`,
+      "CompuServicesSoft Pasto",
+      "tienda tecnología Pasto",
+    ],
+    openGraph: {
+      title: titulo,
+      description: descripcion,
+      url: canonical,
+      type: "website",
+    },
     alternates: { canonical },
   };
 }
@@ -47,10 +61,11 @@ export default async function BuscarPage({ params, searchParams }: Props) {
   let errorMsg = "";
 
   try {
-    [categoriasData, { content: productos, totalPages, totalElements }] = await Promise.all([
-      getCategorias(),
-      buscarProductos(termino, page, PAGE_SIZE),
-    ]);
+    [categoriasData, { content: productos, totalPages, totalElements }] =
+      await Promise.all([
+        getCategorias(),
+        buscarProductos(termino, page, PAGE_SIZE),
+      ]);
   } catch {
     errorMsg = "No se pudo conectar con el servidor. Intenta más tarde.";
   }
@@ -65,7 +80,6 @@ export default async function BuscarPage({ params, searchParams }: Props) {
       {/* Layout: sidebar + grid */}
       <div className="container-site px-4 sm:px-6 lg:px-8 pt-[172px] lg:pt-18 pb-20 flex-1">
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
-
           <CatalogoFiltros
             categorias={categoriasData}
             categoriaActivaId={null}
@@ -74,13 +88,13 @@ export default async function BuscarPage({ params, searchParams }: Props) {
           />
 
           <div className="flex-1 min-w-0">
-
             {/* Título SEO dentro del área de productos */}
             <h1 className="text-xl sm:text-2xl font-black text-gray-900 mb-4">
-              Resultados para{" "}
-              <span className="text-primary">"{termino}"</span>
+              Resultados para <span className="text-primary">"{termino}"</span>
               {totalElements > 0 && (
-                <span className="ml-2 text-sm font-normal text-gray-400">{totalElements} producto{totalElements !== 1 ? "s" : ""}</span>
+                <span className="ml-2 text-sm font-normal text-gray-400">
+                  {totalElements} producto{totalElements !== 1 ? "s" : ""}
+                </span>
               )}
             </h1>
 
@@ -93,9 +107,12 @@ export default async function BuscarPage({ params, searchParams }: Props) {
             {!errorMsg && productos.length === 0 ? (
               <div className="py-24 text-center">
                 <p className="text-5xl mb-4">🔍</p>
-                <p className="text-lg font-bold text-gray-800 mb-2">Sin resultados</p>
+                <p className="text-lg font-bold text-gray-800 mb-2">
+                  Sin resultados
+                </p>
                 <p className="text-gray-500 text-sm">
-                  No encontramos productos para "{termino}". Intenta con otro término.
+                  No encontramos productos para "{termino}". Intenta con otro
+                  término.
                 </p>
               </div>
             ) : (

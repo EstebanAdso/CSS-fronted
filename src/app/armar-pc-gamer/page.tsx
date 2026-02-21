@@ -9,9 +9,31 @@ import type { Producto } from "@/types";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Arma tu PC | CompuServicesSoft — Pasto, Nariño",
+  title:
+    "Arma tu PC Gamer en Pasto | Cotizador y Configurador de Computadores — CompuServicesSoft Nariño",
   description:
-    "Cotiza y arma tu computador ideal con los componentes disponibles en CompuServicesSoft. Procesador, RAM, Motherboard, SSD, NVMe, Gráfica, Monitor y más.",
+    "Cotiza y arma tu computador gamer ideal con los mejores componentes en Pasto, Nariño. Selecciona procesador, RAM, Motherboard, SSD, NVMe, Gráfica, Monitor y más. Asesoría gratis en CompuServicesSoft, CC San Agustín Local 224A.",
+  keywords: [
+    "armar PC Pasto",
+    "armar PC gamer Pasto",
+    "cotizar PC Pasto",
+    "configurador PC Pasto",
+    "ensamblar computador Pasto",
+    "armar computador gamer Pasto",
+    "cotizador PC gamer Pasto Nariño",
+    "componentes PC Pasto",
+    "armado de computadores Pasto",
+    "PC gamer Pasto precio",
+    "CompuServicesSoft Pasto",
+  ],
+  openGraph: {
+    title: "Arma tu PC Gamer en Pasto | CompuServicesSoft Nariño",
+    description:
+      "Cotiza tu PC gamer ideal con nuestro configurador. Asesoría gratis en Pasto, Nariño.",
+    url: "https://compuservicessoft.com/armar-pc-gamer",
+    type: "website",
+  },
+  alternates: { canonical: "https://compuservicessoft.com/armar-pc-gamer" },
 };
 
 /* IDs de categorías según la BD */
@@ -40,8 +62,16 @@ async function cargar(id: number): Promise<Producto[]> {
 export default async function ArmarPage() {
   /* Carga en paralelo todas las categorías */
   const [
-    procesadores, rams, boards, fuentes,
-    ssds, nvmes, graficas, monitores, gabinetes, disipadores,
+    procesadores,
+    rams,
+    boards,
+    fuentes,
+    ssds,
+    nvmes,
+    graficas,
+    monitores,
+    gabinetes,
+    disipadores,
   ] = await Promise.all([
     cargar(CAT.procesador),
     cargar(CAT.ram),
@@ -62,7 +92,7 @@ export default async function ArmarPage() {
   });
 
   const disipadorFiltrados = disipadores.filter(
-    (p) => !p.nombre.toLowerCase().includes("pasta")
+    (p) => !p.nombre.toLowerCase().includes("pasta"),
   );
 
   return (
@@ -70,16 +100,15 @@ export default async function ArmarPage() {
       <Navbar tema="claro" />
       <main className="min-h-screen bg-gray-50 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="container-site">
-
           {/* Encabezado */}
           <div className="mb-10 text-center">
-
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-3">
-              Arma tu <span className="text-primary">PC</span>
+              Arma tu <span className="text-primary">PC Gamer</span> en Pasto
             </h1>
             <p className="text-gray-500 max-w-xl mx-auto">
               Selecciona cada componente y obtén tu cotización al instante.
-              Envíanosla por WhatsApp y te asesoramos sin costo.
+              Envíanosla por WhatsApp y te asesoramos sin costo en Pasto,
+              Nariño.
             </p>
           </div>
 

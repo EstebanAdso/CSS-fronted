@@ -6,40 +6,46 @@ import { useRef } from "react";
 import { urlCategoria } from "@/lib/utils";
 
 const categorias = [
-  { nombre: "SSD",                img: "/imagenes/categorias/IASSD.webp" },
-  { nombre: "M2",                 img: "/imagenes/categorias/nvme.jpg" },
-  { nombre: "MONITOR",            img: "/imagenes/categorias/IAMONITOR.webp" },
-  { nombre: "RAM",                img: "/imagenes/categorias/IARAM.webp" },
-  { nombre: "FUENTE DE PODER",    img: "/imagenes/categorias/IAFUENTE.webp" },
-  { nombre: "COMPUTADOR",         img: "/imagenes/categorias/computador.jpg" },
-  { nombre: "GRAFICA",            img: "/imagenes/categorias/IAGRAFICA.webp" },
-  { nombre: "MOUSE",              img: "/imagenes/categorias/mouseC.png" },
-  { nombre: "TECLADO",            img: "/imagenes/categorias/tecladoC.jpg" },
+  { nombre: "SSD", img: "/imagenes/categorias/IASSD.webp" },
+  { nombre: "M2", img: "/imagenes/categorias/nvme.jpg" },
+  { nombre: "MONITOR", img: "/imagenes/categorias/IAMONITOR.webp" },
+  { nombre: "RAM", img: "/imagenes/categorias/IARAM.webp" },
+  { nombre: "FUENTE DE PODER", img: "/imagenes/categorias/IAFUENTE.webp" },
+  { nombre: "COMPUTADOR", img: "/imagenes/categorias/computador.jpg" },
+  { nombre: "GRAFICA", img: "/imagenes/categorias/IAGRAFICA.webp" },
+  { nombre: "MOUSE", img: "/imagenes/categorias/mouseC.png" },
+  { nombre: "TECLADO", img: "/imagenes/categorias/tecladoC.jpg" },
   { nombre: "CONTROLES Y JUEGOS", img: "/imagenes/categorias/control.png" },
-  { nombre: "BASE REFRIGERANTE",  img: "/imagenes/categorias/baserefrigerante.png" },
-  { nombre: "MOTHERBOARD",        img: "/imagenes/categorias/IABOARD.webp" },
-  { nombre: "PROCESADOR",         img: "/imagenes/categorias/IAPROCESADOR.webp" },
-  { nombre: "DISIPADOR",          img: "/imagenes/categorias/disipador.jpeg" },
-  { nombre: "REGULADOR",          img: "/imagenes/categorias/fuente%20de%20poder%202.png" },
+  {
+    nombre: "BASE REFRIGERANTE",
+    img: "/imagenes/categorias/baserefrigerante.png",
+  },
+  { nombre: "MOTHERBOARD", img: "/imagenes/categorias/IABOARD.webp" },
+  { nombre: "PROCESADOR", img: "/imagenes/categorias/IAPROCESADOR.webp" },
+  { nombre: "DISIPADOR", img: "/imagenes/categorias/disipador.jpeg" },
+  {
+    nombre: "REGULADOR",
+    img: "/imagenes/categorias/fuente%20de%20poder%202.png",
+  },
 ];
 
 /* Nombre visible más amigable para mostrar en la card */
 const NOMBRE_DISPLAY: Record<string, string> = {
-  "SSD": "SSD",
-  "M2": "M.2 NVMe",
-  "MONITOR": "Monitor",
-  "RAM": "RAM",
+  SSD: "SSD",
+  M2: "M.2 NVMe",
+  MONITOR: "Monitor",
+  RAM: "RAM",
   "FUENTE DE PODER": "Fuente de Poder",
-  "COMPUTADOR": "Computadores",
-  "GRAFICA": "Tarjeta Gráfica",
-  "MOUSE": "Mouse",
-  "TECLADO": "Teclado",
+  COMPUTADOR: "Computadores",
+  GRAFICA: "Tarjeta Gráfica",
+  MOUSE: "Mouse",
+  TECLADO: "Teclado",
   "CONTROLES Y JUEGOS": "Controles y Juegos",
   "BASE REFRIGERANTE": "Base Refrigerante",
-  "MOTHERBOARD": "Motherboard",
-  "PROCESADOR": "Procesador",
-  "DISIPADOR": "Disipador",
-  "REGULADOR": "Reguladores y UPS",
+  MOTHERBOARD: "Motherboard",
+  PROCESADOR: "Procesador",
+  DISIPADOR: "Disipador",
+  REGULADOR: "Reguladores y UPS",
 };
 
 export default function CategoriasCarrusel() {
@@ -48,13 +54,18 @@ export default function CategoriasCarrusel() {
   function scroll(dir: "left" | "right") {
     if (!scrollRef.current) return;
     const ancho = scrollRef.current.offsetWidth;
-    scrollRef.current.scrollBy({ left: dir === "right" ? ancho : -ancho, behavior: "smooth" });
+    scrollRef.current.scrollBy({
+      left: dir === "right" ? ancho : -ancho,
+      behavior: "smooth",
+    });
   }
 
   return (
-    <section id="categorias" className="py-10 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100/80">
+    <section
+      id="categorias"
+      className="py-10 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100/80"
+    >
       <div className="container-site">
-
         {/* Encabezado */}
         <div className="flex items-end justify-between mb-1 px-1">
           <div>
@@ -62,7 +73,8 @@ export default function CategoriasCarrusel() {
               — Catálogo —
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900">
-              Categorías <span className="text-primary">Destacadas</span>
+              Categorías <span className="text-primary">Destacadas</span> en
+              Pasto
             </h2>
           </div>
           <Link
@@ -70,8 +82,18 @@ export default function CategoriasCarrusel() {
             className="text-xs font-semibold text-gray-500 hover:text-gray-900 flex items-center gap-1 ml-4 shrink-0"
           >
             Ver todas
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </Link>
         </div>
@@ -87,8 +109,18 @@ export default function CategoriasCarrusel() {
             aria-label="Anterior"
             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white border border-gray-200 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-all duration-200 shadow-lg opacity-70 hover:opacity-100 hover:scale-110"
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-5 h-5 sm:w-6 sm:h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
@@ -98,8 +130,18 @@ export default function CategoriasCarrusel() {
             aria-label="Siguiente"
             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white border border-gray-200 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-all duration-200 shadow-lg opacity-70 hover:opacity-100 hover:scale-110"
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-5 h-5 sm:w-6 sm:h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
 
@@ -107,7 +149,11 @@ export default function CategoriasCarrusel() {
           <div
             ref={scrollRef}
             className="flex gap-3 overflow-x-auto pb-2 scroll-smooth"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollSnapType: "x mandatory" }}
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              scrollSnapType: "x mandatory",
+            }}
           >
             {categorias.map((cat) => (
               <Link
@@ -119,7 +165,7 @@ export default function CategoriasCarrusel() {
                 <div className="relative w-full aspect-4/3 bg-gray-50 overflow-hidden">
                   <Image
                     src={cat.img}
-                    alt={NOMBRE_DISPLAY[cat.nombre] ?? cat.nombre}
+                    alt={`${NOMBRE_DISPLAY[cat.nombre] ?? cat.nombre} en Pasto — CompuServicesSoft Nariño`}
                     fill
                     className="object-contain group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, (max-width: 1536px) 16vw, 14vw"
@@ -129,15 +175,24 @@ export default function CategoriasCarrusel() {
                   <p className="text-sm font-bold text-gray-800 leading-snug group-hover:text-gray-900 transition-colors truncate">
                     {NOMBRE_DISPLAY[cat.nombre] ?? cat.nombre}
                   </p>
-                  <svg className="w-3.5 h-3.5 text-gray-400 shrink-0 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-3.5 h-3.5 text-gray-400 shrink-0 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </div>
               </Link>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
