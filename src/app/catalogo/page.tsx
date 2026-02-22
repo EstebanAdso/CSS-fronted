@@ -72,7 +72,7 @@ export default async function CatalogoPage({
   const q = params.q ?? "";
   const categoriaId = params.categoriaId ? Number(params.categoriaId) : null;
   const page = params.page ? Math.max(0, Number(params.page) - 1) : 0;
-  const PAGE_SIZE = 20;
+  const PAGE_SIZE = 12;
 
   /* Redirect legacy: ?q= → /catalogo/buscar/[slug] */
   if (q) redirect(urlBusqueda(q));

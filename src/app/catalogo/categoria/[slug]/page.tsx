@@ -62,7 +62,7 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
   const { slug } = await params;
   const sp = await searchParams;
   const page = sp.page ? Math.max(0, Number(sp.page) - 1) : 0;
-  const PAGE_SIZE = 20;
+  const PAGE_SIZE = 12;
 
   let categoriasData: Categoria[] = [];
   let categoriaActiva: Categoria | null = null;

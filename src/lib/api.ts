@@ -18,7 +18,7 @@ export function resolverImagen(rutaBackend: string): string {
 
 export async function getProductos(
   page = 0,
-  size = 20,
+  size = 12,
   sort = "nombre,asc"
 ): Promise<PaginatedResponse<Producto>> {
   const res = await fetch(
@@ -40,7 +40,7 @@ export async function getProductoPorId(id: number): Promise<Producto> {
 export async function buscarProductos(
   q: string,
   page = 0,
-  size = 20
+  size = 12
 ): Promise<PaginatedResponse<Producto>> {
   const res = await fetch(
     `${BASE_URL}/api/products/search?q=${encodeURIComponent(q)}&page=${page}&size=${size}`,
@@ -71,7 +71,7 @@ export async function getCategoriaPorId(id: number): Promise<Categoria> {
 export async function getProductosPorCategoria(
   categoriaId: number,
   page = 0,
-  size = 20
+  size = 12
 ): Promise<PaginatedResponse<Producto>> {
   const res = await fetch(
     `${BASE_URL}/api/categories/${categoriaId}/products?page=${page}&size=${size}`,
