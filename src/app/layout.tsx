@@ -164,7 +164,7 @@ export const metadata: Metadata = {
       "Compra SSD, RAM, GPU, procesadores y más copmonentes de computador en Pasto, Nariño. Armado de PCs gamer y servicio técnico especializado. ¡Visítanos en el CC San Agustín Local 224A!",
     images: [
       {
-        url: "https://compuservicessoft.com/imagenes/local.jpeg",
+        url: "https://compuservicessoft.com/imagenes/local.webp",
         width: 1200,
         height: 630,
         alt: "CompuServicesSoft - Tienda de tecnología en Pasto, Nariño — CC San Agustín",
@@ -176,7 +176,7 @@ export const metadata: Metadata = {
     title: "CompuServicesSoft | Tienda de Computadores en Pasto, Nariño",
     description:
       "Compra SSD, RAM, GPU, procesadores y periféricos en Pasto, Nariño. Armado de PCs gamer y servicio técnico especializado en el CC San Agustín.",
-    images: ["https://compuservicessoft.com/imagenes/local.jpeg"],
+    images: ["https://compuservicessoft.com/imagenes/local.webp"],
   },
   category: "technology",
   icons: {
@@ -235,7 +235,7 @@ export default function RootLayout({
       "https://wa.me/573242264795",
     ],
     priceRange: "$$",
-    image: "https://compuservicessoft.com/imagenes/local.jpeg",
+    image: "https://compuservicessoft.com/imagenes/local.webp",
     hasMap: "https://maps.app.goo.gl/e3nUAFL7zDNTMF9i7",
     knowsAbout: [
       "Venta de componentes de computador",

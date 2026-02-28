@@ -117,7 +117,7 @@ export default function AboutSection() {
           <div>
             <div className="rounded-3xl overflow-hidden relative aspect-4/5 border border-gray-200 shadow-md">
               <Image
-                src="/imagenes/local.jpeg"
+                src="/imagenes/local.webp"
                 alt="Local CompuServicesSoft — CC San Agustín, Pasto"
                 fill
                 className="object-cover object-top"

@@ -7,25 +7,25 @@ import { urlCategoria } from "@/lib/utils";
 
 const categorias = [
   { nombre: "SSD", img: "/imagenes/categorias/IASSD.webp" },
-  { nombre: "M2", img: "/imagenes/categorias/nvme.jpg" },
+  { nombre: "M2", img: "/imagenes/categorias/nvme.webp" },
   { nombre: "MONITOR", img: "/imagenes/categorias/IAMONITOR.webp" },
   { nombre: "RAM", img: "/imagenes/categorias/IARAM.webp" },
   { nombre: "FUENTE DE PODER", img: "/imagenes/categorias/IAFUENTE.webp" },
-  { nombre: "COMPUTADOR", img: "/imagenes/categorias/computador.jpg" },
+  { nombre: "COMPUTADOR", img: "/imagenes/categorias/computador.webp" },
   { nombre: "GRAFICA", img: "/imagenes/categorias/IAGRAFICA.webp" },
-  { nombre: "MOUSE", img: "/imagenes/categorias/mouseC.png" },
-  { nombre: "TECLADO", img: "/imagenes/categorias/tecladoC.jpg" },
-  { nombre: "CONTROLES Y JUEGOS", img: "/imagenes/categorias/control.png" },
+  { nombre: "MOUSE", img: "/imagenes/categorias/mouseC.webp" },
+  { nombre: "TECLADO", img: "/imagenes/categorias/tecladoC.webp" },
+  { nombre: "CONTROLES Y JUEGOS", img: "/imagenes/categorias/control.webp" },
   {
     nombre: "BASE REFRIGERANTE",
-    img: "/imagenes/categorias/baserefrigerante.png",
+    img: "/imagenes/categorias/baserefrigerante.webp",
   },
   { nombre: "MOTHERBOARD", img: "/imagenes/categorias/IABOARD.webp" },
   { nombre: "PROCESADOR", img: "/imagenes/categorias/IAPROCESADOR.webp" },
-  { nombre: "DISIPADOR", img: "/imagenes/categorias/disipador.jpeg" },
+  { nombre: "DISIPADOR", img: "/imagenes/categorias/disipador.webp" },
   {
     nombre: "REGULADOR",
-    img: "/imagenes/categorias/fuente%20de%20poder%202.png",
+    img: "/imagenes/categorias/fuente%20de%20poder%202.webp",
   },
 ];
 

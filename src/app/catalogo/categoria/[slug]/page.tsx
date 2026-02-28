@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const titulo = `${cat.nombre} en Pasto, Nariño | CompuServicesSoft`;
   const descripcion = `Compra ${cat.nombre} en Pasto, Nariño al mejor precio. ${cat.descripcion ?? "Productos originales con garantía."} Visita CompuServicesSoft en el CC San Agustín, Local 224A.`;
   const canonical = `https://compuservicessoft.com${urlCategoriaFiltro(cat.nombre)}`;
-  const ogImage = "https://compuservicessoft.com/imagenes/local.jpeg";
+  const ogImage = "https://compuservicessoft.com/imagenes/local.webp";
 
   return {
     title: titulo,
