@@ -104,7 +104,7 @@ export default async function CatalogoPathPage({ params }: Props) {
   if (!resultado) notFound();
 
   const { producto } = resultado;
-  const disponible = producto.estado === "activo" || producto.estado === "disponible";
+  const disponible = producto.cantidad > 0;
   const imagenSrc = resolverImagen(producto.imagen);
   const urlCat = urlCategoria(producto.categoria.nombre);
 

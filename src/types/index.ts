@@ -12,10 +12,8 @@ export type Producto = {
   nombre: string;
   cantidad: number;
   precioVendido: number;
-  total: number;
   imagen: string;
   descripcion: string;
-  estado: string;
   categoria: Categoria;
 };
 
