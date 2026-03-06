@@ -19,19 +19,77 @@ export const metadata: Metadata = {
   description:
     "Tienda de tecnología en Pasto, Nariño. Venta de SSD, RAM, tarjetas gráficas, procesadores, monitores y componentes para PC. Armado de computadores gamer y servicio técnico especializado. CC San Agustín Local 224A. ¡Envíos en Pasto!",
   keywords: [
+    // Tienda
     "CompuServicesSoft Pasto",
     "tienda computadores Pasto",
     "tienda tecnología Pasto",
     "componentes PC Pasto",
-    "SSD Pasto",
-    "RAM Pasto",
-    "tarjeta gráfica Pasto",
-    "procesador Pasto",
-    "monitor Pasto",
-    "armar PC gamer Pasto",
-    "servicio técnico computadores Pasto",
     "CC San Agustín Pasto",
     "tienda tecnología Nariño",
+
+    // SSD - Disco Sólido
+    "SSD Pasto",
+    "disco duro sólido Pasto",
+    "disco sólido Pasto",
+    "solid state drive Pasto",
+    "HDD Pasto",
+    "disco duro Pasto",
+
+    // RAM - Memoria
+    "RAM Pasto",
+    "memoria RAM Pasto",
+    "memoria Pasto",
+    "memoria DDR4 Pasto",
+    "memoria DDR5 Pasto",
+    "memoria para PC Pasto",
+
+    // GPU - Tarjeta Gráfica
+    "tarjeta gráfica Pasto",
+    "tarjeta de video Pasto",
+    "GPU Pasto",
+    "gráfica Pasto",
+    "placa de video Pasto",
+
+    // Procesador
+    "procesador Pasto",
+    "CPU Pasto",
+    "procesador Intel Pasto",
+    "procesador AMD Pasto",
+
+    // Monitor
+    "monitor Pasto",
+    "pantalla Pasto",
+    "monitor gaming Pasto",
+    "monitor gamer Pasto",
+
+    // Motherboard
+    "motherboard Pasto",
+    "tarjeta madre Pasto",
+    "placa madre Pasto",
+
+    // Periféricos
+    "teclado Pasto",
+    "mouse Pasto",
+    "teclado gaming Pasto",
+    "mouse gamer Pasto",
+
+    // Ensamble
+    "armar PC gamer Pasto",
+    "ensamble PC Pasto",
+    "PC gamer Pasto",
+    "computador gamer Pasto",
+    "armado PC Pasto",
+    "ensamblar computador Pasto",
+
+    // Servicios
+    "servicio técnico computadores Pasto",
+    "reparación computadores Pasto",
+    "mantenimiento PC Pasto",
+
+    // Otros componentes
+    "fuente de poder Pasto",
+    "gabinete Pasto",
+    "ventiladores PC Pasto",
     "componentes gaming Pasto",
     "periféricos Pasto",
   ],
@@ -55,8 +113,67 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  /* Schema.org LocalBusiness - mejora SEO local en Google */
+  const schemaLocalBusiness = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CompuServicesSoft",
+    "description": "Tienda de tecnología en Pasto especializada en componentes de PC, armado de computadores gamer y servicio técnico",
+    "image": "https://compuservicessoft.com/imagenes/local.jpeg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "CC San Agustín Local 224A",
+      "addressLocality": "Pasto",
+      "addressRegion": "Nariño",
+      "postalCode": "520001",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 1.2136,
+      "longitude": -77.2811
+    },
+    "url": "https://compuservicessoft.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/CompuServicesSoft",
+      "https://www.instagram.com/compuservicessoft"
+    ]
+  };
+
+  /* Schema.org WebSite - ayuda con sitelinks search box */
+  const schemaWebSite = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CompuServicesSoft",
+    "url": "https://compuservicessoft.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://compuservicessoft.com/catalogo/buscar/{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white">
+      {/* Schema.org para mejorar SEO local - Lo que SÍ funciona */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLocalBusiness) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebSite) }}
+      />
+
       <Navbar />
       <HeroSection />
       <CategoriasCarrusel />

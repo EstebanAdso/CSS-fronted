@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getCategorias, getProductosPorCategoria, resolverImagen } from "@/lib/api";
 import { slugify, urlProducto, urlCategoria } from "@/lib/utils";
+import { generateProductKeywords } from "@/lib/seo-keywords";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -66,22 +67,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const imagen = resolverImagen(producto.imagen);
   const canonicalUrl = `https://compuservicessoft.com${urlProducto(producto.nombre, producto.categoria.nombre)}`;
 
+  /* Generar keywords optimizadas con sinónimos */
+  const keywords = generateProductKeywords(
+    producto.nombre,
+    producto.categoria.nombre,
+    catSlug
+  );
+
   return {
     title: titulo,
     description: descripcion,
-    keywords: [
-      producto.nombre,
-      `${producto.nombre} Pasto`,
-      `${producto.nombre} Nariño`,
-      `${producto.nombre} precio`,
-      `comprar ${producto.nombre} Pasto`,
-      producto.categoria.nombre,
-      `${producto.categoria.nombre} Pasto`,
-      `${producto.categoria.nombre} Nariño`,
-      "CompuServicesSoft",
-      "tienda tecnología Pasto",
-      "CC San Agustín Pasto",
-    ],
+    keywords,
     openGraph: {
       title: titulo,
       description: descripcion,
@@ -101,7 +97,21 @@ export default async function CatalogoPathPage({ params }: Props) {
 
   const [catSlug, prodSlug] = path;
   const resultado = await resolverProducto(catSlug, prodSlug);
-  if (!resultado) notFound();
+
+  /* Si el producto no existe, redirigir TEMPORALMENTE (307) a la categoría o al catálogo.
+     Los productos inactivos se eliminan del servidor pero pueden reactivarse desde el 
+     inventario local y volver a sincronizarse. Por eso usamos 307 (temporal) para que 
+     Google siga revisando la URL y la reindexe cuando vuelva a estar disponible. */
+  if (!resultado) {
+    const categoria = await resolverCategoria(catSlug);
+    if (categoria) {
+      /* La categoría existe, redirigir temporalmente a ella */
+      redirect(`/catalogo/categoria/${catSlug}`);
+    } else {
+      /* La categoría tampoco existe, redirigir al catálogo general */
+      redirect('/catalogo');
+    }
+  }
 
   const { producto } = resultado;
   const disponible = producto.cantidad > 0;
@@ -120,12 +130,12 @@ export default async function CatalogoPathPage({ params }: Props) {
     `Hola, vengo de la página CompuServicesSoft. Me interesa: ${producto.nombre}. ¿Está disponible?`
   );
 
-  /* Schema.org Product para Google */
+  /* Schema.org Product mejorado para Google - Lo que SÍ ayuda al SEO */
   const schemaProduct = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: producto.nombre,
-    description: producto.descripcion,
+    description: producto.descripcion || `${producto.nombre} disponible en CompuServicesSoft Pasto`,
     image: imagenSrc,
     brand: {
       "@type": "Brand",
@@ -138,18 +148,66 @@ export default async function CatalogoPathPage({ params }: Props) {
       price: producto.precioVendido,
       availability: disponible ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
       seller: {
-        "@type": "Organization",
-        name: "CompuServicesSoft",
+        "@type": "LocalBusiness",
+        "name": "CompuServicesSoft",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "CC San Agustín Local 224A",
+          "addressLocality": "Pasto",
+          "addressRegion": "Nariño",
+          "addressCountry": "CO"
+        },
+        "telephone": "+57-300-xxx-xxxx"
       },
+      "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      "itemCondition": "https://schema.org/NewCondition"
     },
     category: producto.categoria.nombre,
+    "sku": `COMPUSERV-${producto.id}`,
+  };
+
+  /* Schema.org BreadcrumbList para mejorar navegación en Google */
+  const schemaBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://compuservicessoft.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Catálogo",
+        "item": "https://compuservicessoft.com/catalogo"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": producto.categoria.nombre,
+        "item": `https://compuservicessoft.com${urlCat}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": producto.nombre,
+        "item": `https://compuservicessoft.com${urlProducto(producto.nombre, producto.categoria.nombre)}`
+      }
+    ]
   };
 
   return (
     <main className="min-h-screen bg-white flex flex-col">
+      {/* Schema.org para Google - Lo que SÍ mejora el SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaProduct) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
       />
       <Navbar tema="claro" />
 

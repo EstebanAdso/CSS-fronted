@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getCategorias, getProductosPorCategoria } from "@/lib/api";
 import { slugify, urlCategoriaFiltro } from "@/lib/utils";
+import { generateCategoryKeywords, getCategorySynonyms } from "@/lib/seo-keywords";
 import type { Categoria } from "@/types";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -34,19 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `https://compuservicessoft.com${urlCategoriaFiltro(cat.nombre)}`;
   const ogImage = "https://compuservicessoft.com/imagenes/local.webp";
 
+  /* Generar keywords optimizadas con sinónimos */
+  const keywords = generateCategoryKeywords(cat.nombre, slug);
+
   return {
     title: titulo,
     description: descripcion,
-    keywords: [
-      `${cat.nombre} Pasto`,
-      `${cat.nombre} Nariño`,
-      `${cat.nombre} Pasto Colombia`,
-      `comprar ${cat.nombre} Pasto`,
-      `${cat.nombre} precio Pasto`,
-      "CompuServicesSoft",
-      "tienda tecnología Pasto",
-      "CC San Agustín Pasto",
-    ],
+    keywords,
     openGraph: {
       title: titulo,
       description: descripcion,
@@ -88,8 +83,63 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
   const paginaActual = page + 1;
   const baseUrl = categoriaActiva ? urlCategoriaFiltro(categoriaActiva.nombre) : undefined;
 
+  /* Schema.org para la categoría - mejora SEO */
+  const schemaCollectionPage = categoriaActiva ? {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${categoriaActiva.nombre} en Pasto`,
+    "description": `Compra ${categoriaActiva.nombre} en Pasto, Nariño. ${totalElements} productos disponibles con garantía y envío.`,
+    "url": `https://compuservicessoft.com${urlCategoriaFiltro(categoriaActiva.nombre)}`,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://compuservicessoft.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://compuservicessoft.com/catalogo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": categoriaActiva.nombre,
+          "item": `https://compuservicessoft.com${urlCategoriaFiltro(categoriaActiva.nombre)}`
+        }
+      ]
+    },
+    "numberOfItems": totalElements,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "CompuServicesSoft",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "CC San Agustín Local 224A",
+        "addressLocality": "Pasto",
+        "addressRegion": "Nariño",
+        "addressCountry": "CO"
+      }
+    }
+  } : null;
+
+  /* Obtener sinónimos para mostrar en el contenido */
+  const synonyms = categoriaActiva ? getCategorySynonyms(slugify(categoriaActiva.nombre)) : [];
+
   return (
     <main className="min-h-screen bg-white flex flex-col">
+      {/* Schema.org para SEO */}
+      {schemaCollectionPage && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaCollectionPage) }}
+        />
+      )}
+
       <Navbar tema="claro" />
 
       {/* Layout: sidebar + grid */}
@@ -105,13 +155,27 @@ export default async function CategoriaFiltroPage({ params, searchParams }: Prop
 
           <div className="flex-1 min-w-0">
 
-            {/* Título SEO dentro del área de productos */}
-            <h1 className="text-xl sm:text-2xl font-black text-gray-900 mb-4 text-center mt-0 lg:mt-4">
-              {categoriaActiva ? categoriaActiva.nombre : "Catálogo de Productos"}
-              {totalElements > 0 && (
-                <span className="ml-2 text-sm font-normal text-gray-400">{totalElements} producto{totalElements !== 1 ? "s" : ""}</span>
-              )}
+            {/* Título SEO H1 - MUY importante para Google */}
+            <h1 className="text-xl sm:text-2xl font-black text-gray-900 mb-2 text-center mt-0 lg:mt-4">
+              {categoriaActiva ? `${categoriaActiva.nombre} en Pasto, Nariño` : "Catálogo de Productos"}
             </h1>
+
+            {/* Descripción enriquecida con keywords - contenido que Google SÍ indexa */}
+            {categoriaActiva && (
+              <div className="mb-4 text-center">
+                <p className="text-sm text-gray-600 max-w-3xl mx-auto">
+                  {categoriaActiva.descripcion || `Encuentra los mejores ${categoriaActiva.nombre.toLowerCase()} en Pasto. 
+                  ${totalElements > 0 ? `${totalElements} producto${totalElements !== 1 ? "s" : ""} disponible${totalElements !== 1 ? "s" : ""}` : "Productos"} con garantía. 
+                  ¡Envíos en Pasto y Nariño!`}
+                </p>
+                {/* Sinónimos ocultos para SEO - ayudan a la indexación semántica */}
+                {synonyms.length > 0 && (
+                  <p className="text-xs text-gray-400 mt-1">
+                    También conocido como: {synonyms.slice(0, 3).join(", ")}
+                  </p>
+                )}
+              </div>
+            )}
 
             {errorMsg && (
               <div className="mb-6 p-5 rounded-xl border border-red-200 bg-red-50 text-center text-red-600 text-sm">
