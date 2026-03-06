@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ProductCard from "@/components/ProductCard";
 import WhatsAppSelector from "@/components/WhatsAppSelector";
+import ProductoNoDisponible from "@/components/ProductoNoDisponible";
 import type { Producto, Categoria } from "@/types";
 
 type Props = { params: Promise<{ path: string[] }> };
@@ -59,7 +60,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const [catSlug, prodSlug] = path;
   const resultado = await resolverProducto(catSlug, prodSlug);
-  if (!resultado) return { title: "Producto no encontrado | CompuServicesSoft" };
+  if (!resultado) {
+    /* Producto no encontrado: usar noindex para no indexar páginas de productos inactivos */
+    return {
+      title: "Producto no disponible | CompuServicesSoft",
+      robots: { index: false, follow: true },
+    };
+  }
 
   const { producto } = resultado;
   const titulo = `${producto.nombre} — ${producto.categoria.nombre} en Pasto | CompuServicesSoft`;
@@ -98,19 +105,57 @@ export default async function CatalogoPathPage({ params }: Props) {
   const [catSlug, prodSlug] = path;
   const resultado = await resolverProducto(catSlug, prodSlug);
 
-  /* Si el producto no existe, redirigir TEMPORALMENTE (307) a la categoría o al catálogo.
-     Los productos inactivos se eliminan del servidor pero pueden reactivarse desde el 
-     inventario local y volver a sincronizarse. Por eso usamos 307 (temporal) para que 
-     Google siga revisando la URL y la reindexe cuando vuelva a estar disponible. */
+  /* Si el producto no existe, mostrar página de "no disponible" en la misma URL.
+     Esto mantiene la URL activa en Google, evita problemas de SEO por redirecciones,
+     y permite que cuando el producto se reactive, Google lo reindexe rápidamente
+     sin perder el historial de indexación. */
   if (!resultado) {
     const categoria = await resolverCategoria(catSlug);
-    if (categoria) {
-      /* La categoría existe, redirigir temporalmente a ella */
-      redirect(`/catalogo/categoria/${catSlug}`);
-    } else {
+    if (!categoria) {
       /* La categoría tampoco existe, redirigir al catálogo general */
-      redirect('/catalogo');
+      notFound();
     }
+
+    /* Obtener productos relacionados de la categoría para mostrar alternativas */
+    let productosRelacionados: Producto[] = [];
+    try {
+      const data = await getProductosPorCategoria(categoria.id, 0, 8);
+      productosRelacionados = data.content.slice(0, 8);
+    } catch {
+      productosRelacionados = [];
+    }
+
+    /* Renderizar página de producto no disponible en la MISMA URL */
+    return (
+      <main className="min-h-screen bg-white flex flex-col">
+        <Navbar tema="claro" />
+
+        {/* Breadcrumb */}
+        <div className="pt-20 pb-0 px-4 sm:px-6 lg:px-8 container-site border-b border-gray-100">
+          <nav aria-label="breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 py-3 flex-wrap">
+            <Link href="/" className="hover:text-primary transition-colors">Inicio</Link>
+            <span>/</span>
+            <Link href="/catalogo" className="hover:text-primary transition-colors">Catálogo</Link>
+            <span>/</span>
+            <Link href={urlCategoria(categoria.nombre)} className="hover:text-primary transition-colors">
+              {categoria.nombre}
+            </Link>
+            <span>/</span>
+            <span className="text-gray-600">Producto no disponible</span>
+          </nav>
+        </div>
+
+        <ProductoNoDisponible
+          nombreProducto={prodSlug.replace(/-/g, ' ').toUpperCase()}
+          nombreCategoria={categoria.nombre}
+          slugCategoria={catSlug}
+          productosRelacionados={productosRelacionados}
+        />
+
+        <Footer />
+        <WhatsAppFloat />
+      </main>
+    );
   }
 
   const { producto } = resultado;
