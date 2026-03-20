@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
     ],
     /* Fallback: si la imagen no carga, no rompe la página */
     dangerouslyAllowSVG: true,
-    unoptimized: false,
+    unoptimized: true,
   },
 };
 

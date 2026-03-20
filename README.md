@@ -30,7 +30,7 @@ Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 La URL base de la API se configura en `.env.local`:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8084
+NEXT_PUBLIC_API_URL=http://localhost:8085
 ```
 
 Para producción usar `.env.production`:
@@ -39,7 +39,7 @@ Para producción usar `.env.production`:
 NEXT_PUBLIC_API_URL=https://compuservicessoft.com
 ```
 
-Si no existe el archivo, el valor por defecto es `http://localhost:8084` (definido en `src/lib/api.ts`).
+Si no existe el archivo, el valor por defecto es `http://localhost:8085` (definido en `src/lib/api.ts`).
 
 ---
 
