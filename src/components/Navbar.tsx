@@ -58,13 +58,18 @@ type Props = {
   /* 'oscuro' = inicio (fondo negro, transparente→oscuro al scroll)
      'claro'  = catálogo/producto (fondo blanco fijo, texto gris oscuro) */
   tema?: "oscuro" | "claro";
+  hideGlobalPhone?: boolean;
 };
 
-export default function Navbar({ tema = "oscuro" }: Props) {
+export default function Navbar({ tema = "oscuro", hideGlobalPhone = false }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const esClaro = tema === "claro";
+
+  const activeContactos = hideGlobalPhone
+    ? contactos.filter((c) => !c.valor.includes("317 403 4349"))
+    : contactos;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -220,7 +225,7 @@ export default function Navbar({ tema = "oscuro" }: Props) {
 
           {/* Lista de contactos */}
           <div className="divide-y divide-gray-100">
-            {contactos.map((c) => (
+            {activeContactos.map((c) => (
               <a
                 key={c.label}
                 href={c.href}

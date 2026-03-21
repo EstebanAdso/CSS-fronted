@@ -13,10 +13,14 @@ const WSP_ICON = (
   </svg>
 );
 
-export default function WhatsAppFloat() {
+export default function WhatsAppFloat({ hideGlobalPhone = false }: { hideGlobalPhone?: boolean } = {}) {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const activeNumeros = hideGlobalPhone
+    ? NUMEROS.filter((n) => !n.label.includes("317 403 4349"))
+    : NUMEROS;
 
   /* Cerrar al hacer clic fuera */
   useEffect(() => {
@@ -39,7 +43,7 @@ export default function WhatsAppFloat() {
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 px-4 pt-3 pb-2">
               ¿A cuál número escribir?
             </p>
-            {NUMEROS.map((n) => (
+            {activeNumeros.map((n) => (
               <a
                 key={n.numero}
                 href={`https://wa.me/${n.numero}?text=Hola%20vengo%20de%20la%20p%C3%A1gina%20CompuServicesSoft,%20me%20interesa%20preguntar%20por%20productos`}
@@ -59,7 +63,13 @@ export default function WhatsAppFloat() {
       {/* Botón flotante */}
       <div className="relative">
         <button
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            if (activeNumeros.length === 1) {
+              window.open(`https://wa.me/${activeNumeros[0].numero}?text=Hola%20vengo%20de%20la%20p%C3%A1gina%20CompuServicesSoft`, "_blank");
+            } else {
+              setOpen((v) => !v);
+            }
+          }}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           aria-label="Contactar por WhatsApp"

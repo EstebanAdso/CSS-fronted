@@ -8,6 +8,7 @@ const links = [
   { label: "Arma tu PC", href: "/armar-pc-gamer" },
   { label: "Quiénes Somos", href: "/#about" },
   { label: "Garantía y Devoluciones", href: "/politicas" },
+  { label: "Desarrollo de Páginas Web", href: "/desarrollo-web" },
 ];
 
 const contactos = [
@@ -64,7 +65,10 @@ const contactos = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({ hideGlobalPhone = false }: { hideGlobalPhone?: boolean } = {}) {
+  const activeContactos = hideGlobalPhone
+    ? contactos.filter((c) => !c.label.includes("317 403 4349"))
+    : contactos;
   return (
     <footer className="bg-dark pt-14 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="container-site">
@@ -117,7 +121,7 @@ export default function Footer() {
               Contacto
             </h3>
             <ul className="flex flex-col gap-2.5">
-              {contactos.map((c) => (
+              {activeContactos.map((c) => (
                 <li key={c.label}>
                   <a
                     href={c.href}

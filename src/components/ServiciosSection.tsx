@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import WhatsAppSelector from "@/components/WhatsAppSelector";
 
 const WrenchIcon = () => (
@@ -24,11 +25,20 @@ const MonitorIcon = () => (
   </svg>
 );
 
+const WebIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
 const servicios = [
   {
     icon: <WrenchIcon />,
     titulo: "Servicio Técnico",
     color: "var(--color-primary)",
+    href: null,
     items: [
       "Reparación de computadoras y celulares",
       "Cambio de glass y display",
@@ -43,6 +53,7 @@ const servicios = [
     icon: <UserCheckIcon />,
     titulo: "Asesorías Personalizadas",
     color: "var(--color-primary)",
+    href: null,
     items: [
       "Asesoría para compra de componentes",
       "Selección según presupuesto",
@@ -57,6 +68,7 @@ const servicios = [
     icon: <MonitorIcon />,
     titulo: "Venta de Componentes",
     color: "var(--color-primary)",
+    href: null,
     items: [
       "SSD y NVMe de última generación",
       "Memorias RAM DDR4/DDR5",
@@ -66,6 +78,21 @@ const servicios = [
       "Procesadores y motherboards",
     ],
     desc: "Todo lo que necesitas para tu computadora, en un solo lugar en Pasto.",
+  },
+  {
+    icon: <WebIcon />,
+    titulo: "Desarrollo Web",
+    color: "var(--color-primary)",
+    href: "/desarrollo-web",
+    items: [
+      "Landing pages profesionales",
+      "Páginas web para empresas",
+      "Tiendas online — E-commerce",
+      "SEO para Pasto y Nariño",
+      "Software a la medida",
+      "Soporte y mantenimiento",
+    ],
+    desc: "Creamos tu presencia digital. Páginas web modernas, rápidas y optimizadas para Google.",
   },
 ];
 
@@ -89,7 +116,7 @@ export default function ServiciosSection() {
         </div>
 
         {/* Grid de servicios */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicios.map((srv) => (
             <div
               key={srv.titulo}
@@ -133,6 +160,20 @@ export default function ServiciosSection() {
                 className="h-0.5 rounded-full w-0 group-hover:w-full transition-all duration-500"
                 style={{ background: `linear-gradient(90deg, ${srv.color}, transparent)` }}
               />
+
+              {/* Enlace "Ver más" solo si tiene href */}
+              {srv.href && (
+                <Link
+                  href={srv.href}
+                  className="inline-flex items-center gap-1.5 text-sm font-bold transition-colors duration-200"
+                  style={{ color: srv.color }}
+                >
+                  Ver servicios web
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              )}
             </div>
           ))}
         </div>
