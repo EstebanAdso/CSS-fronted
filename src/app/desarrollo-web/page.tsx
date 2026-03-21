@@ -2,6 +2,39 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Diseño y Desarrollo de Páginas Web en Pasto | CompuServicesSoft",
+  description: "Expertos en diseño web, tiendas online y desarrollo de software a la medida en Pasto, Nariño. Destaca tu negocio en Google con nuestro SEO local integrado. ¡Cotiza ya!",
+  keywords: [
+    "páginas web Pasto",
+    "desarrollo web Pasto",
+    "diseño web Pasto",
+    "tiendas online Pasto",
+    "crear página web Nariño",
+    "software a la medida Pasto",
+    "programador web Pasto",
+    "diseñador web Pasto",
+    "agencia web Pasto",
+    "SEO Pasto"
+  ],
+  openGraph: {
+    title: "Diseño y Desarrollo de Páginas Web en Pasto",
+    description: "Impulsa tus ventas en Pasto, Nariño con una página web o tienda online rápida, moderna y lista para SEO. Cotiza sin costo hoy mismo.",
+    url: "https://compuservicessoft.com/desarrollo-web",
+    type: "website",
+    images: [
+      {
+        url: "https://compuservicessoft.com/imagenes/local.webp",
+        width: 1200,
+        height: 630,
+        alt: "Servicios de Desarrollo de Páginas Web en Pasto, Nariño",
+      },
+    ],
+  },
+  alternates: { canonical: "https://compuservicessoft.com/desarrollo-web" },
+};
 
 /* ─── Íconos inline ────────────────────────────────────────────────── */
 const CodeIcon = () => (
@@ -167,8 +200,77 @@ const WA_LINK =
   "https://wa.me/573242264795?text=Hola%20CompuServicesSoft%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio%20en%20Pasto";
 
 export default function DesarrolloWebPage() {
+  const schemaService = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Diseño y Desarrollo de Páginas Web",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "CompuServicesSoft",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "CC San Agustín Local 224A",
+        "addressLocality": "Pasto",
+        "addressRegion": "Nariño",
+        "postalCode": "520001",
+        "addressCountry": "CO"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Pasto"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Desarrollo Web",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Landing Page" },
+          "price": "500000",
+          "priceCurrency": "COP"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Página Empresarial" },
+          "price": "1200000",
+          "priceCurrency": "COP"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Tienda Online E-commerce" },
+          "price": "2000000",
+          "priceCurrency": "COP"
+        }
+      ]
+    }
+  };
+
+  const schemaFAQ = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  };
+
   return (
     <main className="min-h-screen" style={{ background: "var(--color-bg)" }}>
+      {/* Marcador SEO para Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaService) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }}
+      />
+      
       <Navbar hideGlobalPhone={true} />
 
       {/* ──── HERO ──────────────────────────────────────────────────── */}
@@ -199,7 +301,7 @@ export default function DesarrolloWebPage() {
           }}
         />
 
-        <div className="container-site relative z-10 text-center">
+        <div className="container-site relative z-10 text-center pt-24 pb-12 lg:pt-32">
           <span
             className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-4 py-1.5 rounded-full"
             style={{
@@ -211,16 +313,17 @@ export default function DesarrolloWebPage() {
             — Desarrollo Web en Pasto, Nariño —
           </span>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 text-white">
-            Páginas Web{" "}
-            <span className="text-gradient-gamer">Profesionales</span>
-            <br />
-            que generan{" "}
-            <span style={{ color: "var(--color-primary)" }}>clientes</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 text-white">
+            <span className="block">
+              Páginas Web <span className="text-gradient-gamer">Profesionales</span>
+            </span>
+            <span className="block mt-1 sm:mt-2 text-2xl sm:text-4xl md:text-5xl font-bold">
+              que generan <span style={{ color: "var(--color-primary)" }}>clientes</span>
+            </span>
           </h1>
 
           <p
-            className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="hidden sm:block text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
             style={{ color: "var(--color-text-muted)" }}
           >
             Diseñamos y desarrollamos páginas web, landing pages, tiendas
@@ -228,19 +331,19 @@ export default function DesarrolloWebPage() {
             Pasto, Nariño adaptadas a dispositivos moviles y computadores. <strong className="text-white">Diseño moderno, SEO incluido y entrega rápida.</strong>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gamer inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-bold text-white text-base"
+              className="btn-gamer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white text-sm sm:text-base tracking-wide"
             >
               <WhatsAppIcon />
               Cotizar gratis por WhatsApp
             </a>
             <a
               href="#servicios-web"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm sm:text-base tracking-wide transition-all duration-200"
               style={{
                 border: "1px solid rgba(140,82,255,0.4)",
                 color: "var(--color-text-muted)",
@@ -498,51 +601,51 @@ export default function DesarrolloWebPage() {
         </div>
       </section>
 
-      {/* ──── CTA FINAL ─────────────────────────────────────────────── */}
-      <div className="container-site px-4 sm:px-6 lg:px-8 pb-20 pt-8 mt-12 mb-8">
-        <section
-          className="py-20 px-6 sm:px-12 text-center relative overflow-hidden rounded-[2.5rem] shadow-2xl border"
+      {/* ──── CTA FINAL IMMERSIVE ───────────────────────────────────────── */}
+      <section
+        className="relative overflow-hidden min-h-[100dvh] sm:min-h-0 sm:py-32 flex flex-col items-center justify-center border-t"
+        style={{
+          background: "linear-gradient(135deg, var(--color-bg-card-dark) 0%, var(--color-bg-card) 50%, var(--color-bg-card-dark) 100%)",
+          borderColor: "rgba(140,82,255,0.15)",
+        }}
+      >
+        <div
+          className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: "linear-gradient(135deg, #1e0035 0%, #0a0010 50%, #1e0035 100%)",
-            borderColor: "rgba(140,82,255,0.15)",
-            boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5), 0 0 40px rgba(140,82,255,0.1)",
+            background: "radial-gradient(ellipse at top center, var(--color-primary-light) 0%, transparent 70%)",
           }}
-        >
-          <div
-            className="absolute inset-0 opacity-15 pointer-events-none"
-            style={{
-              background: "radial-gradient(ellipse at center, var(--color-primary) 0%, transparent 70%)",
-            }}
-          />
-          <div className="relative z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5">
+        />
+
+        <div className="container-site relative z-10 text-center px-6">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full" style={{
+            color: "var(--color-primary)",
+            background: "rgba(140,82,255,0.12)",
+            border: "1px solid rgba(140,82,255,0.3)",
+          }}>
+            ÚLTIMO PASO
+          </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
             ¿Listo para tener tu{" "}
-            <span style={{ color: "var(--color-primary)" }}>
-              página web en Pasto
+            <span className="block mt-1 text-gradient-gamer">
+              página web en Pasto?
             </span>
-            ?
           </h2>
-          <p
-            className="text-lg max-w-xl mx-auto mb-10"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            Escríbenos hoy. Te respondemos rápido y te damos una cotización
-            personalizada{" "}
-            <strong className="text-white">sin ningún costo</strong>.
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
+            Escríbenos hoy. Te respondemos rápido y te damos una cotización personalizada completamente <strong className="text-white">sin ningún costo</strong>.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gamer inline-flex items-center justify-center gap-2.5 px-10 py-5 rounded-xl font-bold text-white text-lg"
+              className="btn-gamer w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-white text-lg sm:text-xl"
             >
               <WhatsAppIcon />
-              Cotizar mi página web gratis
+              Cotizar gratis
             </a>
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-10 py-5 rounded-xl font-bold text-base transition-all duration-200"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-200"
               style={{
                 border: "1px solid rgba(140,82,255,0.35)",
                 color: "var(--color-text-muted)",
@@ -552,8 +655,7 @@ export default function DesarrolloWebPage() {
             </Link>
           </div>
         </div>
-        </section>
-      </div>
+      </section>
 
       <Footer hideGlobalPhone={true} />
       <WhatsAppFloat hideGlobalPhone={true} />
