@@ -178,6 +178,147 @@ body {
   background: linear-gradient(90deg, transparent, var(--color-primary-light), var(--color-accent), var(--color-primary-light), transparent);
 }
 
+/* ─── Animaciones Desarrollo Web ─────────────────────────────────── */
+
+/* Scroll reveal — fade in desde abajo */
+.dw-reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dw-reveal-up.dw-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll reveal — desde la izquierda */
+.dw-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dw-reveal-left.dw-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scroll reveal — desde la derecha */
+.dw-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dw-reveal-right.dw-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scroll reveal — scale */
+.dw-reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dw-reveal-scale.dw-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hero — entrada escalonada */
+@keyframes dwHeroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.dw-hero-stagger > * {
+  opacity: 0;
+  animation: dwHeroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.dw-hero-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.dw-hero-stagger > *:nth-child(2) { animation-delay: 0.25s; }
+.dw-hero-stagger > *:nth-child(3) { animation-delay: 0.4s; }
+.dw-hero-stagger > *:nth-child(4) { animation-delay: 0.55s; }
+.dw-hero-stagger > *:nth-child(5) { animation-delay: 0.7s; }
+.dw-hero-stagger > *:nth-child(6) { animation-delay: 0.85s; }
+
+/* Orbe flotante animada */
+@keyframes dwOrbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(20px, -15px) scale(1.05); }
+  66%      { transform: translate(-10px, 10px) scale(0.97); }
+}
+.dw-orb-animate {
+  animation: dwOrbFloat 8s ease-in-out infinite;
+}
+
+@keyframes dwOrbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-15px, 20px) scale(1.03); }
+  66%      { transform: translate(10px, -10px) scale(0.96); }
+}
+.dw-orb-animate-2 {
+  animation: dwOrbFloat2 10s ease-in-out infinite;
+}
+
+/* Línea de código que aparece */
+@keyframes dwCodeLineIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.dw-code-line {
+  animation: dwCodeLineIn 0.4s ease-out forwards;
+}
+
+/* Badge de confianza — pulse suave */
+@keyframes dwBadgePulse {
+  0%, 100% { border-color: rgba(255,255,255,0.1); }
+  50%      { border-color: rgba(140,82,255,0.3); }
+}
+.dw-badge-pulse {
+  animation: dwBadgePulse 3s ease-in-out infinite;
+}
+
+/* Línea conectora entre pasos (desktop) */
+@keyframes dwLineGrow {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Gradiente animado en texto */
+@keyframes dwGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.dw-text-shimmer {
+  background: linear-gradient(90deg, var(--color-primary-lighter), var(--color-accent), var(--color-accent-2), var(--color-primary-lighter));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: dwGradientShift 4s ease-in-out infinite;
+}
+
+/* Grid item stagger para cards */
+.dw-stagger-grid > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dw-stagger-grid.dw-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dw-stagger-grid.dw-visible > *:nth-child(1) { transition-delay: 0s; }
+.dw-stagger-grid.dw-visible > *:nth-child(2) { transition-delay: 0.1s; }
+.dw-stagger-grid.dw-visible > *:nth-child(3) { transition-delay: 0.2s; }
+.dw-stagger-grid.dw-visible > *:nth-child(4) { transition-delay: 0.3s; }
+.dw-stagger-grid.dw-visible > *:nth-child(5) { transition-delay: 0.35s; }
+
 /* Contenedor principal responsive */
 .container-site {
   width: 100%;

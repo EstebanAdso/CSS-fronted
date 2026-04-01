@@ -16,6 +16,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/desarrollo-web`,          lastModified: ahora, changeFrequency: "weekly",  priority: 0.9 },
     { url: `${BASE}/catalogo`,                lastModified: ahora, changeFrequency: "daily",   priority: 0.9 },
     { url: `${BASE}/armar-pc-gamer`,          lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/desarrollo-web/diseno-web-personalizado`,       lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/desarrollo-web/seo-posicionamiento-web-pasto`,  lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/desarrollo-web/tienda-online-ecommerce`,        lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/desarrollo-web/landing-page`,                   lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/desarrollo-web/software-a-la-medida`,           lastModified: ahora, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/politicas`,               lastModified: ahora, changeFrequency: "monthly", priority: 0.4 },
   ];
 

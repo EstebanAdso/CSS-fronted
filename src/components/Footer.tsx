@@ -2,13 +2,21 @@ import Link from "next/link";
 
 const currentYear = new Date().getFullYear();
 
-const links = [
+const linksTienda = [
   { label: "Inicio", href: "/" },
   { label: "Catálogo de Productos", href: "/catalogo" },
-  { label: "Arma tu PC", href: "/armar-pc-gamer" },
+  { label: "Arma tu PC Gamer", href: "/armar-pc-gamer" },
   { label: "Quiénes Somos", href: "/#about" },
   { label: "Garantía y Devoluciones", href: "/politicas" },
-  { label: "Desarrollo de Páginas Web", href: "/desarrollo-web" },
+];
+
+const linksSoftware = [
+  { label: "Desarrollo Web", href: "/desarrollo-web" },
+  { label: "Diseño Web Personalizado", href: "/desarrollo-web/diseno-web-personalizado" },
+  { label: "SEO y Posicionamiento", href: "/desarrollo-web/seo-posicionamiento-web-pasto" },
+  { label: "Tiendas Online", href: "/desarrollo-web/tienda-online-ecommerce" },
+  { label: "Landing Pages", href: "/desarrollo-web/landing-page" },
+  { label: "Software a la Medida", href: "/desarrollo-web/software-a-la-medida" },
 ];
 
 const contactos = [
@@ -73,10 +81,10 @@ export default function Footer({ hideGlobalPhone = false }: { hideGlobalPhone?: 
     <footer className="bg-dark pt-14 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="container-site">
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
 
           {/* Columna 1: Marca */}
-          <div className="lg:col-span-1 text-center sm:text-left">
+          <div className="text-center sm:text-left">
             <div className="flex items-center gap-2 mb-3 justify-center sm:justify-start">
               <img
                 src="/favicon/favicon-96x96.png"
@@ -88,7 +96,7 @@ export default function Footer({ hideGlobalPhone = false }: { hideGlobalPhone?: 
               </span>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed mb-4 max-w-[260px] mx-auto sm:mx-0">
-              Tu tienda de tecnología en Pasto, Nariño. Componentes, armado de PCs y servicio técnico.
+              Tecnología y desarrollo web en Pasto, Nariño. Venta de componentes, armado de PCs y creación de páginas web profesionales.
             </p>
             <div className="flex items-center gap-2 text-xs text-gray-400 justify-center sm:justify-start">
               <span className="w-2 h-2 rounded-full bg-active animate-pulse shrink-0" />
@@ -96,13 +104,16 @@ export default function Footer({ hideGlobalPhone = false }: { hideGlobalPhone?: 
             </div>
           </div>
 
-          {/* Columna 2: Links */}
+          {/* Columna 2: Tienda */}
           <div className="text-center sm:text-left">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-              Navegación
+            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 flex items-center gap-2 justify-center sm:justify-start">
+              <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8" /><path d="M12 17v4" />
+              </svg>
+              Tienda
             </h3>
             <ul className="flex flex-col gap-2">
-              {links.map((link) => (
+              {linksTienda.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -115,7 +126,29 @@ export default function Footer({ hideGlobalPhone = false }: { hideGlobalPhone?: 
             </ul>
           </div>
 
-          {/* Columna 3: Contacto */}
+          {/* Columna 3: Desarrollo Web */}
+          <div className="text-center sm:text-left">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 flex items-center gap-2 justify-center sm:justify-start">
+              <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+              </svg>
+              Desarrollo Web
+            </h3>
+            <ul className="flex flex-col gap-2">
+              {linksSoftware.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Columna 4: Contacto */}
           <div className="text-center sm:text-left sm:col-span-2 lg:col-span-1">
             <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
               Contacto

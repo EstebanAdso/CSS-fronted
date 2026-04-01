@@ -1,12 +1,16 @@
-import Navbar from "@/components/Navbar";
+import NavbarWeb from "@/components/desarrollo-web/NavbarWeb";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Link from "next/link";
 import type { Metadata } from "next";
+import HeroParticles from "@/components/desarrollo-web/HeroParticles";
+import AnimatedCodeTerminal from "@/components/desarrollo-web/AnimatedCodeTerminal";
+import AnimatedSection from "@/components/desarrollo-web/AnimatedSection";
+import AnimatedCounter from "@/components/desarrollo-web/AnimatedCounter";
 
 export const metadata: Metadata = {
-  title: "Diseño y Desarrollo de Páginas Web en Pasto | CompuServicesSoft",
-  description: "Expertos en diseño web, tiendas online y desarrollo de software a la medida en Pasto, Nariño. Destaca tu negocio en Google con nuestro SEO local integrado. ¡Cotiza ya!",
+  title: "Páginas Web en Pasto | CompuServicesSoft",
+  description: "Diseño web, tiendas online y software a la medida en Pasto, Nariño. SEO incluido, entrega rápida y presupuesto sin costo. ¡Cotiza hoy!",
   keywords: [
     "páginas web Pasto",
     "desarrollo web Pasto",
@@ -82,6 +86,7 @@ const servicios = [
     icon: <RocketIcon />,
     titulo: "Landing Page",
     precio: "Desde $500.000 COP",
+    href: "/desarrollo-web/landing-page",
     items: [
       "Diseño moderno y atractivo",
       "Optimizada para conversión",
@@ -95,8 +100,9 @@ const servicios = [
   },
   {
     icon: <CodeIcon />,
-    titulo: "Página Empresarial",
+    titulo: "Diseño Web Personalizado",
     precio: "Desde $1.200.000 COP",
+    href: "/desarrollo-web/diseno-web-personalizado",
     items: [
       "Múltiples secciones y páginas",
       "Diseño personalizado con tu marca",
@@ -112,6 +118,7 @@ const servicios = [
     icon: <StoreIcon />,
     titulo: "Tienda Online — E-commerce",
     precio: "Desde $2.000.000 COP",
+    href: "/desarrollo-web/tienda-online-ecommerce",
     items: [
       "Catálogo de productos",
       "Carrito y pasarela de pago",
@@ -127,6 +134,7 @@ const servicios = [
     icon: <GearIcon />,
     titulo: "Software a la Medida",
     precio: "Cotización personalizada",
+    href: "/desarrollo-web/software-a-la-medida",
     items: [
       "Análisis de requerimientos",
       "Desarrollo personalizado",
@@ -259,6 +267,15 @@ export default function DesarrolloWebPage() {
     }))
   };
 
+  const schemaBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://compuservicessoft.com" },
+      { "@type": "ListItem", "position": 2, "name": "Desarrollo Web", "item": "https://compuservicessoft.com/desarrollo-web" },
+    ]
+  };
+
   return (
     <main className="min-h-screen" style={{ background: "var(--color-bg)" }}>
       {/* Marcador SEO para Google */}
@@ -270,8 +287,12 @@ export default function DesarrolloWebPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }}
       />
-      
-      <Navbar hideGlobalPhone={true} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+      />
+
+      <NavbarWeb />
 
       {/* ──── HERO ──────────────────────────────────────────────────── */}
       <section
@@ -282,94 +303,143 @@ export default function DesarrolloWebPage() {
             "linear-gradient(135deg, #0a0010 0%, #1e0035 45%, #12001f 100%)",
         }}
       >
-        {/* Orbe derecha */}
+        {/* Partículas animadas de fondo */}
+        <HeroParticles />
+
+        {/* Orbe derecha — con animación de flotación */}
         <div
-          className="absolute top-[-60px] right-[-80px] w-[420px] h-[420px] rounded-full opacity-20 pointer-events-none"
+          className="absolute top-[-60px] right-[-80px] w-[420px] h-[420px] rounded-full opacity-20 pointer-events-none dw-orb-animate"
           style={{
             background:
               "radial-gradient(circle, var(--color-primary) 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
-        {/* Orbe izquierda inferior */}
+        {/* Orbe izquierda inferior — con animación de flotación */}
         <div
-          className="absolute bottom-[-40px] left-[-60px] w-[300px] h-[300px] rounded-full opacity-10 pointer-events-none"
+          className="absolute bottom-[-40px] left-[-60px] w-[300px] h-[300px] rounded-full opacity-10 pointer-events-none dw-orb-animate-2"
           style={{
             background:
               "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
             filter: "blur(50px)",
           }}
         />
+        {/* Orbe extra centro-superior */}
+        <div
+          className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[500px] h-[500px] rounded-full opacity-[0.07] pointer-events-none dw-orb-animate"
+          style={{
+            background: "radial-gradient(circle, var(--color-accent-2) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
 
-        <div className="container-site relative z-10 text-center pt-24 pb-12 lg:pt-32">
-          <span
-            className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-4 py-1.5 rounded-full"
-            style={{
-              color: "var(--color-primary)",
-              background: "rgba(140,82,255,0.12)",
-              border: "1px solid rgba(140,82,255,0.3)",
-            }}
-          >
-            — Desarrollo Web en Pasto, Nariño —
-          </span>
-
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 text-white">
-            <span className="block">
-              Páginas Web <span className="text-gradient-gamer">Profesionales</span>
-            </span>
-            <span className="block mt-1 sm:mt-2 text-2xl sm:text-4xl md:text-5xl font-bold">
-              que generan <span style={{ color: "var(--color-primary)" }}>clientes</span>
-            </span>
-          </h1>
-
-          <p
-            className="hidden sm:block text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            Diseñamos y desarrollamos páginas web, landing pages, tiendas
-            online y software a la medida para empresas y emprendedores en
-            Pasto, Nariño adaptadas a dispositivos moviles y computadores. <strong className="text-white">Diseño moderno, SEO incluido y entrega rápida.</strong>
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gamer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white text-sm sm:text-base tracking-wide"
-            >
-              <WhatsAppIcon />
-              Cotizar gratis por WhatsApp
-            </a>
-            <a
-              href="#servicios-web"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm sm:text-base tracking-wide transition-all duration-200"
-              style={{
-                border: "1px solid rgba(140,82,255,0.4)",
-                color: "var(--color-text-muted)",
-              }}
-            >
-              Ver servicios
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
-          </div>
-
-          {/* Badges de confianza */}
-          <div className="mt-12 flex flex-wrap gap-4 justify-center">
-            {["✅ Presupuesto sin costo", "🚀 Entrega rápida", "📍 En Pasto, Nariño", "🔍 SEO incluido"].map((b) => (
+        <div className="container-site relative z-10 pt-24 pb-12 lg:pt-28">
+          <div className="grid xl:grid-cols-2 gap-12 items-center">
+            {/* Columna izquierda — texto con stagger */}
+            <div className="dw-hero-stagger text-center xl:text-left">
               <span
-                key={b}
-                className="text-sm px-4 py-2 rounded-full"
+                className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-4 py-1.5 rounded-full"
                 style={{
-                  color: "var(--color-text-muted)",
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "var(--color-primary)",
+                  background: "rgba(140,82,255,0.12)",
+                  border: "1px solid rgba(140,82,255,0.3)",
                 }}
               >
-                {b}
+                — Desarrollo Web en Pasto, Nariño —
               </span>
+
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 text-white">
+                <span className="block">
+                  Páginas Web <span className="dw-text-shimmer">Profesionales</span>
+                </span>
+                <span className="block mt-1 sm:mt-2 text-2xl sm:text-4xl md:text-5xl font-bold">
+                  que generan <span style={{ color: "var(--color-primary)" }}>clientes</span>
+                </span>
+              </h1>
+
+              <p
+                className="hidden sm:block text-base sm:text-lg max-w-2xl mb-10 leading-relaxed xl:mx-0 mx-auto"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                Diseñamos y desarrollamos páginas web, landing pages, tiendas
+                online y software a la medida para empresas y emprendedores en
+                Pasto, Nariño adaptadas a dispositivos moviles y computadores. <strong className="text-white">Diseño moderno, SEO incluido y entrega rápida.</strong>
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start">
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gamer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white text-sm sm:text-base tracking-wide"
+                >
+                  <WhatsAppIcon />
+                  Cotizar gratis por WhatsApp
+                </a>
+                <a
+                  href="#servicios-web"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm sm:text-base tracking-wide transition-all duration-200"
+                  style={{
+                    border: "1px solid rgba(140,82,255,0.4)",
+                    color: "var(--color-text-muted)",
+                  }}
+                >
+                  Ver servicios
+                  <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </a>
+              </div>
+
+              {/* Badges de confianza con pulse */}
+              <div className="mt-12 flex flex-wrap gap-4 justify-center xl:justify-start">
+                {["✅ Presupuesto sin costo", "🚀 Entrega rápida", "📍 En Pasto, Nariño", "🔍 SEO incluido"].map((b, i) => (
+                  <span
+                    key={b}
+                    className="text-sm px-4 py-2 rounded-full dw-badge-pulse"
+                    style={{
+                      color: "var(--color-text-muted)",
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      animationDelay: `${i * 0.5}s`,
+                    }}
+                  >
+                    {b}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Columna derecha — terminal de código animado */}
+            <div className="hidden xl:block">
+              <AnimatedCodeTerminal />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──── CONTADOR DE CONFIANZA ───────────────────────────────────── */}
+      <section
+        className="py-10 px-4 sm:px-6 lg:px-8 border-y"
+        style={{
+          background: "linear-gradient(90deg, #0a0010 0%, #1e0035 50%, #0a0010 100%)",
+          borderColor: "rgba(140,82,255,0.15)",
+        }}
+      >
+        <div className="container-site">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              { end: 50, suffix: "+", label: "Proyectos entregados" },
+              { end: 100, suffix: "%", label: "Clientes satisfechos" },
+              { end: 5, suffix: "", prefix: "<", label: "Días entrega landing" },
+              { end: 24, suffix: "/7", label: "Tu web siempre online" },
+            ].map((stat, i) => (
+              <AnimatedSection key={stat.label} delay={i * 150} direction="up">
+                <div className="text-3xl sm:text-4xl font-black dw-text-shimmer">
+                  <AnimatedCounter end={stat.end} suffix={stat.suffix} prefix={stat.prefix} />
+                </div>
+                <p className="text-sm mt-1" style={{ color: "var(--color-text-muted)" }}>{stat.label}</p>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -378,26 +448,28 @@ export default function DesarrolloWebPage() {
       {/* ──── SERVICIOS ─────────────────────────────────────────────── */}
       <section id="servicios-web" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="container-site">
-          <div className="text-center mb-14">
-            <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
-              — Lo que ofrecemos —
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              Nuestros{" "}
-              <span className="text-primary">Servicios Web</span>
-            </h2>
-            <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
-            <p className="text-gray-500 max-w-xl mx-auto">
-              Desde una landing page sencilla hasta un sistema web complejo.
-              Trabajamos con empresas de Pasto y Nariño.
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="text-center mb-14">
+              <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
+                — Lo que ofrecemos —
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Nuestros{" "}
+                <span className="text-primary">Servicios Web</span>
+              </h2>
+              <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
+              <p className="text-gray-500 max-w-xl mx-auto">
+                Desde una landing page sencilla hasta un sistema web complejo.
+                Trabajamos con empresas de Pasto y Nariño.
+              </p>
+            </div>
+          </AnimatedSection>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {servicios.map((srv) => (
+            {servicios.map((srv, srvIndex) => (
+              <AnimatedSection key={srv.titulo} delay={srvIndex * 120} direction="up">
               <div
-                key={srv.titulo}
-                className="relative bg-white rounded-3xl p-7 flex flex-col gap-5 border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="relative bg-white rounded-3xl p-7 flex flex-col gap-5 border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full"
                 style={{
                   borderColor: srv.popular
                     ? "var(--color-primary)"
@@ -456,21 +528,34 @@ export default function DesarrolloWebPage() {
                   {srv.precio}
                 </div>
 
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
-                  style={{
-                    background: srv.popular
-                      ? "var(--color-primary)"
-                      : "var(--color-dark)",
-                  }}
-                >
-                  <WhatsAppIcon />
-                  Cotizar ahora
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href={WA_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
+                    style={{
+                      background: srv.popular
+                        ? "var(--color-primary)"
+                        : "var(--color-dark)",
+                    }}
+                  >
+                    <WhatsAppIcon />
+                    Cotizar ahora
+                  </a>
+                  <Link
+                    href={srv.href}
+                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 hover:opacity-80"
+                    style={{
+                      border: "1px solid rgba(140,82,255,0.3)",
+                      color: "var(--color-primary)",
+                    }}
+                  >
+                    Ver detalles →
+                  </Link>
+                </div>
               </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -505,21 +590,23 @@ export default function DesarrolloWebPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ventajas.map((v) => (
-              <div key={v.titulo} className="card-gamer rounded-3xl p-8 text-center flex flex-col gap-4">
-                <div className="text-5xl">{v.emoji}</div>
-                <h3 className="text-lg font-black text-white">{v.titulo}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
-                  {v.desc}
-                </p>
-              </div>
+            {ventajas.map((v, i) => (
+              <AnimatedSection key={v.titulo} delay={i * 120} direction="scale">
+                <div className="card-gamer rounded-3xl p-8 text-center flex flex-col gap-4 h-full">
+                  <div className="text-5xl animate-float" style={{ animationDelay: `${i * 0.3}s` }}>{v.emoji}</div>
+                  <h3 className="text-lg font-black text-white">{v.titulo}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
+                    {v.desc}
+                  </p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* ──── PROCESO ───────────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section id="proceso-web" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="container-site">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
@@ -533,22 +620,21 @@ export default function DesarrolloWebPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pasos.map((p) => (
-              <div
-                key={p.num}
-                className="bg-white rounded-3xl p-8 flex flex-col gap-4 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group"
-              >
-                <span
-                  className="text-5xl font-black transition-colors duration-200"
-                  style={{ color: "rgba(140,82,255,0.2)" }}
-                >
-                  {p.num}
-                </span>
-                <h3 className="text-xl font-black text-gray-900 group-hover:text-primary transition-colors duration-200">
-                  {p.titulo}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{p.desc}</p>
-              </div>
+            {pasos.map((p, i) => (
+              <AnimatedSection key={p.num} delay={i * 200} direction={i % 2 === 0 ? "left" : "right"}>
+                <div className="bg-white rounded-3xl p-8 flex flex-col gap-4 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 group h-full">
+                  <span
+                    className="text-5xl font-black transition-colors duration-200"
+                    style={{ color: "rgba(140,82,255,0.2)" }}
+                  >
+                    {p.num}
+                  </span>
+                  <h3 className="text-xl font-black text-gray-900 group-hover:text-primary transition-colors duration-200">
+                    {p.titulo}
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{p.desc}</p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -556,6 +642,7 @@ export default function DesarrolloWebPage() {
 
       {/* ──── FAQ ───────────────────────────────────────────────────── */}
       <section
+        id="faq-web"
         className="py-24 px-4 sm:px-6 lg:px-8"
         style={{ background: "var(--color-bg)" }}
       >
@@ -580,22 +667,82 @@ export default function DesarrolloWebPage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            {faqs.map((faq) => (
-              <div
-                key={faq.q}
-                className="rounded-2xl p-6 flex flex-col gap-3"
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
-              >
-                <h3 className="font-bold text-base text-white">
-                  {faq.q}
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-300">
-                  {faq.a}
-                </p>
-              </div>
+            {faqs.map((faq, i) => (
+              <AnimatedSection key={faq.q} delay={i * 100}>
+                <div
+                  className="rounded-2xl p-6 flex flex-col gap-3"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <h3 className="font-bold text-base text-white">
+                    {faq.q}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-gray-300">
+                    {faq.a}
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──── EXPLORA NUESTROS SERVICIOS ──────────────────────────────── */}
+      <section id="explora-web" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="container-site">
+          <div className="text-center mb-14">
+            <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-3">
+              — Explora en detalle —
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-4">
+              Conoce cada <span className="text-primary">servicio a fondo</span>
+            </h2>
+            <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
+            <p className="text-gray-500 max-w-xl mx-auto">
+              Visita la página de cada servicio para conocer el proceso, precios, preguntas frecuentes y todo lo que necesitas saber.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                titulo: "Diseño Web Personalizado",
+                href: "/desarrollo-web/diseno-web-personalizado",
+                desc: "Páginas web únicas con los colores de tu marca, diseño responsive y reuniones personalizadas para entender tu visión.",
+              },
+              {
+                titulo: "SEO y Posicionamiento Web",
+                href: "/desarrollo-web/seo-posicionamiento-web-pasto",
+                desc: "Haz que tu negocio aparezca en Google cuando busquen tus servicios en Pasto. SEO local, técnico y de contenido.",
+              },
+              {
+                titulo: "Tiendas Online / E-commerce",
+                href: "/desarrollo-web/tienda-online-ecommerce",
+                desc: "Vende tus productos 24/7 con tu propia tienda virtual: catálogo, carrito, pasarela de pago y gestión de pedidos.",
+              },
+              {
+                titulo: "Landing Pages",
+                href: "/desarrollo-web/landing-page",
+                desc: "Páginas de aterrizaje rápidas y optimizadas para convertir visitantes en clientes. Entrega en 5–7 días hábiles.",
+              },
+              {
+                titulo: "Software a la Medida",
+                href: "/desarrollo-web/software-a-la-medida",
+                desc: "Sistemas web, ERP, CRM y aplicaciones personalizadas para automatizar los procesos de tu negocio en Pasto.",
+              },
+            ].map((s, i) => (
+              <AnimatedSection key={s.href} delay={i * 100} direction="up">
+                <Link
+                  href={s.href}
+                  className="bg-white rounded-3xl p-8 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-200 flex flex-col gap-3 group hover:-translate-y-1 h-full"
+                >
+                  <h3 className="text-lg font-black text-gray-900 group-hover:text-primary transition-colors">{s.titulo}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed flex-1">{s.desc}</p>
+                  <span className="text-sm font-bold text-primary mt-2">Ver servicio completo →</span>
+                </Link>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -617,19 +764,20 @@ export default function DesarrolloWebPage() {
         />
 
         <div className="container-site relative z-10 text-center px-6">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full" style={{
-            color: "var(--color-primary)",
-            background: "rgba(140,82,255,0.12)",
-            border: "1px solid rgba(140,82,255,0.3)",
-          }}>
-            ÚLTIMO PASO
-          </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-            ¿Listo para tener tu{" "}
-            <span className="block mt-1 text-gradient-gamer">
-              página web en Pasto?
+          <AnimatedSection direction="scale">
+            <span className="inline-block text-xs font-bold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full" style={{
+              color: "var(--color-primary)",
+              background: "rgba(140,82,255,0.12)",
+              border: "1px solid rgba(140,82,255,0.3)",
+            }}>
+              ÚLTIMO PASO
             </span>
-          </h2>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+              ¿Listo para tener tu{" "}
+              <span className="block mt-1 dw-text-shimmer">
+                página web en Pasto?
+              </span>
+            </h2>
           <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
             Escríbenos hoy. Te respondemos rápido y te damos una cotización personalizada completamente <strong className="text-white">sin ningún costo</strong>.
           </p>
@@ -654,6 +802,7 @@ export default function DesarrolloWebPage() {
               Volver al inicio
             </Link>
           </div>
+          </AnimatedSection>
         </div>
       </section>
 

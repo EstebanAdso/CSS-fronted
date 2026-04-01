@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Desarrollo de Páginas Web en Pasto, Nariño | CompuServicesSoft — Diseño Web Profesional",
+    "Desarrollo Web en Pasto, Nariño | CompuServicesSoft",
   description:
-    "¿Necesitas una página web en Pasto? En CompuServicesSoft diseñamos y desarrollamos páginas web profesionales, landing pages, tiendas online y software a la medida para empresas en Pasto, Nariño. Presupuesto sin costo. ¡Contáctanos hoy!",
+    "Páginas web profesionales, landing pages, tiendas online y software a la medida en Pasto, Nariño. Diseño moderno, SEO optimizado y entrega rápida.",
   keywords: [
     /* Páginas web + Pasto */
     "páginas web Pasto",
