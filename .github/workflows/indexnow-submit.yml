@@ -15,13 +15,13 @@ jobs:
       # Wait for Vercel to finish deploying before submitting URLs.
       # Vercel typically takes 30–90 seconds for a production build.
       - name: Wait for Vercel deployment
-        run: sleep 90
+        run: sleep 120
 
       # Call the IndexNow deploy endpoint to submit all site URLs to Bing.
       - name: Submit all URLs to IndexNow
         run: |
-          RESPONSE=$(curl -s -o /tmp/indexnow_response.json -w "%{http_code}" \
-            -X POST "https://compuservicessoft.com/api/indexnow-deploy" \
+          RESPONSE=$(curl -s -L -o /tmp/indexnow_response.json -w "%{http_code}" \
+            -X POST "https://www.compuservicessoft.com/api/indexnow-deploy" \
             -H "x-api-key: ${{ secrets.INDEXNOW_ROUTE_SECRET }}")
 
           echo "HTTP status: $RESPONSE"
