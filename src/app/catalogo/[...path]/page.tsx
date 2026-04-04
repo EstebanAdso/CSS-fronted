@@ -190,22 +190,22 @@ export default async function CatalogoPathPage({ params }: Props) {
       "@type": "Offer",
       url: `https://compuservicessoft.com${urlProducto(producto.nombre, producto.categoria.nombre)}`,
       priceCurrency: "COP",
-      price: producto.precioVendido,
+      price: String(producto.precioVendido),   // string evita que Google asuma USD
       availability: disponible ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
       seller: {
         "@type": "LocalBusiness",
-        "name": "CompuServicesSoft",
-        "address": {
+        name: "CompuServicesSoft",
+        telephone: "+573242264795",
+        address: {
           "@type": "PostalAddress",
-          "streetAddress": "CC San Agustín Local 224A",
-          "addressLocality": "Pasto",
-          "addressRegion": "Nariño",
-          "addressCountry": "CO"
+          streetAddress: "CC San Agustín Local 224A",
+          addressLocality: "Pasto",
+          addressRegion: "Nariño",
+          addressCountry: "CO",
         },
-        "telephone": "+57-300-xxx-xxxx"
       },
-      "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      "itemCondition": "https://schema.org/NewCondition"
+      priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+      itemCondition: "https://schema.org/NewCondition",
     },
     category: producto.categoria.nombre,
     "sku": `COMPUSERV-${producto.id}`,
