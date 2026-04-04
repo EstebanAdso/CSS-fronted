@@ -1,22 +1,24 @@
 /**
  * TEMPORAL — eliminar después de verificar.
  * GET /api/debug-env
- * Muestra si INDEXNOW_ROUTE_SECRET está definido y sus primeros/últimos 4 chars.
+ * Muestra exactamente qué headers llegan al servidor.
  */
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   const secret = process.env.INDEXNOW_ROUTE_SECRET ?? "";
-  const auth = req.headers.get("authorization") ?? "";
 
-  const bearerValue = auth.startsWith("Bearer ") ? auth.slice(7) : auth;
+  // Leer ambos headers para detectar cuál llega
+  const authHeader   = req.headers.get("authorization") ?? "(vacío)";
+  const xApiKey      = req.headers.get("x-api-key")     ?? "(vacío)";
 
   return NextResponse.json({
-    secret_length: secret.length,
-    secret_last4: secret.slice(-4),
-    auth_header_length: auth.length,
-    bearer_value_length: bearerValue.length,
-    bearer_last4: bearerValue.slice(-4),
-    match: auth === `Bearer ${secret}`,
+    secret_length : secret.length,
+    secret_last4  : secret.slice(-4),
+    authorization_header_length: authHeader === "(vacío)" ? 0 : authHeader.length,
+    authorization_header_last4 : authHeader === "(vacío)" ? "(vacío)" : authHeader.slice(-4),
+    x_api_key_length: xApiKey === "(vacío)" ? 0 : xApiKey.length,
+    match_authorization: authHeader === `Bearer ${secret}`,
+    match_x_api_key    : xApiKey    === secret,
   });
 }

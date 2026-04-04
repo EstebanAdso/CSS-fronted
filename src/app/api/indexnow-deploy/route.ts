@@ -6,7 +6,7 @@
  *
  * Example (curl):
  *   curl -X POST https://compuservicessoft.com/api/indexnow-deploy \
- *        -H "Authorization: Bearer <INDEXNOW_ROUTE_SECRET>"
+ *        -H "x-api-key: <INDEXNOW_ROUTE_SECRET>"
  *
  * Vercel deploy hook: add this URL in Project → Settings → Deploy Hooks
  * and call it from the "Post-deployment webhook" step in your workflow.
@@ -16,11 +16,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { submitAllUrls } from "@/lib/indexnow-sitemap";
 
 export async function POST(req: NextRequest) {
-  /* --- Auth check -------------------------------------------------------- */
+  /* --- Auth check --------------------------------------------------------
+   * Usamos x-api-key en lugar de Authorization porque Vercel Edge puede
+   * stripear el header Authorization antes de que llegue al handler.
+   * -------------------------------------------------------------------- */
   const secret = process.env.INDEXNOW_ROUTE_SECRET;
   if (secret) {
-    const auth = req.headers.get("authorization") ?? "";
-    if (auth !== `Bearer ${secret}`) {
+    const key = req.headers.get("x-api-key") ?? "";
+    if (key !== secret) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
   }

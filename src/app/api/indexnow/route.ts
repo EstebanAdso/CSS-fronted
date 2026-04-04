@@ -10,19 +10,22 @@
  *   { "urls": ["https://compuservicessoft.com/a", "https://compuservicessoft.com/b"] }
  *
  * Security: protected by INDEXNOW_ROUTE_SECRET so only internal callers can trigger it.
- * Pass the secret in the Authorization header:
- *   Authorization: Bearer <INDEXNOW_ROUTE_SECRET>
+ * Pass the secret in the x-api-key header:
+ *   x-api-key: <INDEXNOW_ROUTE_SECRET>
  */
 
 import { NextRequest, NextResponse } from "next/server";
 import { submitUrl, submitUrls } from "@/lib/indexnow";
 
 export async function POST(req: NextRequest) {
-  /* --- Auth check -------------------------------------------------------- */
+  /* --- Auth check --------------------------------------------------------
+   * Usamos x-api-key en lugar de Authorization porque Vercel Edge puede
+   * stripear el header Authorization antes de que llegue al handler.
+   * -------------------------------------------------------------------- */
   const secret = process.env.INDEXNOW_ROUTE_SECRET;
   if (secret) {
-    const auth = req.headers.get("authorization") ?? "";
-    if (auth !== `Bearer ${secret}`) {
+    const key = req.headers.get("x-api-key") ?? "";
+    if (key !== secret) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
   }
