@@ -4,7 +4,7 @@
  */
 
 const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
-const SITE_HOST = "compuservicessoft.com";
+const SITE_HOST = "www.compuservicessoft.com";
 
 function getKey(): string {
   const key = process.env.INDEXNOW_KEY;

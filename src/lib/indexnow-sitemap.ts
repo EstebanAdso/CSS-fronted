@@ -10,7 +10,7 @@
 
 import { submitUrls } from "@/lib/indexnow";
 
-const BASE = "https://compuservicessoft.com";
+const BASE = "https://www.compuservicessoft.com";
 
 /** All static page URLs — keep in sync with src/app/sitemap.ts */
 const STATIC_URLS: string[] = [
