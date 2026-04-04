@@ -3,16 +3,20 @@
  * GET /api/debug-env
  * Muestra si INDEXNOW_ROUTE_SECRET está definido y sus primeros/últimos 4 chars.
  */
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function POST(req: NextRequest) {
   const secret = process.env.INDEXNOW_ROUTE_SECRET ?? "";
+  const auth = req.headers.get("authorization") ?? "";
+
+  const bearerValue = auth.startsWith("Bearer ") ? auth.slice(7) : auth;
+
   return NextResponse.json({
-    defined: secret.length > 0,
-    length: secret.length,
-    // Muestra solo los primeros y últimos 4 chars para no exponer el valor completo
-    preview: secret.length > 8
-      ? `${secret.slice(0, 4)}...${secret.slice(-4)}`
-      : "(muy corto o vacío)",
+    secret_length: secret.length,
+    secret_last4: secret.slice(-4),
+    auth_header_length: auth.length,
+    bearer_value_length: bearerValue.length,
+    bearer_last4: bearerValue.slice(-4),
+    match: auth === `Bearer ${secret}`,
   });
 }
