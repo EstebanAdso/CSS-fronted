@@ -1,0 +1,36 @@
+name: Submit URLs to IndexNow after deploy
+
+# Runs on every push to main (= every Vercel production deployment)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  indexnow:
+    name: Notify IndexNow
+    runs-on: ubuntu-latest
+
+    steps:
+      # Wait for Vercel to finish deploying before submitting URLs.
+      # Vercel typically takes 30–90 seconds for a production build.
+      - name: Wait for Vercel deployment
+        run: sleep 90
+
+      # Call the IndexNow deploy endpoint to submit all site URLs to Bing.
+      - name: Submit all URLs to IndexNow
+        run: |
+          RESPONSE=$(curl -s -o /tmp/indexnow_response.json -w "%{http_code}" \
+            -X POST "https://compuservicessoft.com/api/indexnow-deploy" \
+            -H "x-api-key: ${{ secrets.INDEXNOW_ROUTE_SECRET }}")
+
+          echo "HTTP status: $RESPONSE"
+          echo "Response body:"
+          cat /tmp/indexnow_response.json
+
+          if [ "$RESPONSE" != "200" ]; then
+            echo "IndexNow submission failed with status $RESPONSE"
+            exit 1
+          fi
+
+          echo "IndexNow submission successful"
