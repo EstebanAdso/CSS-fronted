@@ -7,6 +7,21 @@ export const metadata: Metadata = {
   title: "Políticas de Garantía y Devolución | CompuServicesSoft Pasto",
   description:
     "Conoce nuestras políticas de garantía (hasta 4 meses) y devolución de productos en CompuServicesSoft, Pasto, Nariño. CC San Agustín, Local 224A.",
+  keywords: [
+    "política de garantía Pasto",
+    "garantía computadores Pasto",
+    "devoluciones CompuServicesSoft",
+    "garantía componentes PC Pasto",
+    "política devolución tecnología Pasto",
+    "CompuServicesSoft garantía",
+  ],
+  openGraph: {
+    title: "Políticas de Garantía y Devolución | CompuServicesSoft Pasto",
+    description:
+      "Garantía hasta 4 meses y devoluciones en 30 días para productos con defecto de fábrica. CompuServicesSoft, CC San Agustín Local 224A, Pasto.",
+    url: "https://compuservicessoft.com/politicas",
+    type: "website",
+  },
   alternates: { canonical: "https://compuservicessoft.com/politicas" },
 };
 

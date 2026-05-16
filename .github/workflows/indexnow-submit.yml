@@ -21,7 +21,7 @@ jobs:
       - name: Submit all URLs to IndexNow
         run: |
           RESPONSE=$(curl -s -L -o /tmp/indexnow_response.json -w "%{http_code}" \
-            -X POST "https://www.compuservicessoft.com/api/indexnow-deploy" \
+            -X POST "https://compuservicessoft.com/api/indexnow-deploy" \
             -H "x-api-key: ${{ secrets.INDEXNOW_ROUTE_SECRET }}")
 
           echo "HTTP status: $RESPONSE"

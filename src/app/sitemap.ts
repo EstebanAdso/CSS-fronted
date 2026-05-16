@@ -2,10 +2,11 @@ import type { MetadataRoute } from "next";
 import { getCategorias, getProductos } from "@/lib/api";
 import { urlProducto, urlCategoria } from "@/lib/utils";
 
-// esto indica a next.js que debe generar el sitemap en cada request
-export const dynamic = "force-dynamic";
-
 const BASE = "https://compuservicessoft.com";
+
+// El sitemap se regenera cada 12 horas en Vercel.
+// new Date() se captura en el momento de regeneración, no en cada crawl.
+export const revalidate = 43200;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const ahora = new Date();
@@ -44,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const data = await getProductos(0, 500, "id,asc");
     paginasProductos = data.content.map((p) => ({
       url: `${BASE}${urlProducto(p.nombre, p.categoria.nombre)}`,
-      lastModified: ahora,
+      lastModified: p.updatedAt ? new Date(p.updatedAt) : ahora,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     }));

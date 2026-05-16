@@ -15,6 +15,7 @@ export type Producto = {
   imagen: string;
   descripcion: string;
   categoria: Categoria;
+  updatedAt?: string; // ISO-8601, null en productos anteriores a la migración
 };
 
 export type PaginatedResponse<T> = {
