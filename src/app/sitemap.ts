@@ -8,6 +8,16 @@ const BASE = "https://compuservicessoft.com";
 // new Date() se captura en el momento de regeneración, no en cada crawl.
 export const revalidate = 43200;
 
+// Para productos sin updatedAt (anteriores a la migración), genera una fecha
+// estable basada en el ID: el mismo producto siempre recibe la misma fecha,
+// distribuida aleatoriamente en los últimos 60 días.
+function fechaEstableParaId(id: number, ahora: Date): Date {
+  const diasAtras = (id * 17 + 11) % 60; // determinístico, rango 0-59
+  const fecha = new Date(ahora);
+  fecha.setDate(fecha.getDate() - diasAtras);
+  return fecha;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const ahora = new Date();
 
@@ -45,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const data = await getProductos(0, 500, "id,asc");
     paginasProductos = data.content.map((p) => ({
       url: `${BASE}${urlProducto(p.nombre, p.categoria.nombre)}`,
-      lastModified: p.updatedAt ? new Date(p.updatedAt) : ahora,
+      lastModified: p.updatedAt ? new Date(p.updatedAt) : fechaEstableParaId(p.id, ahora),
       changeFrequency: "weekly" as const,
       priority: 0.7,
     }));
