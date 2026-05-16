@@ -74,7 +74,7 @@ export default function AboutSection() {
                 📍 Ver en el mapa
               </a>
               <WhatsAppSelector
-                mensaje="Hola%20vengo%20de%20la%20p%C3%A1gina%20CompuServicesSoft"
+                mensaje="Hola vengo de la página CompuServicesSoft"
                 className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 transition-all duration-300"
               >
                 Escribirnos

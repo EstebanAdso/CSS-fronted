@@ -171,9 +171,7 @@ export default async function CatalogoPathPage({ params }: Props) {
     relacionados = [];
   }
 
-  const msgWsp = encodeURIComponent(
-    `Hola, vengo de la página CompuServicesSoft. Me interesa: ${producto.nombre}. ¿Está disponible?`
-  );
+  const msgWsp = `Hola, vengo de la página CompuServicesSoft. Me interesa: ${producto.nombre}. ¿Está disponible?`;
 
   /* Schema.org Product mejorado para Google - Lo que SÍ ayuda al SEO */
   const schemaProduct = {

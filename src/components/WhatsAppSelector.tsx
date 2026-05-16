@@ -29,7 +29,7 @@ type Props = {
 };
 
 /* Componente reutilizable: muestra un popover para elegir número de WhatsApp */
-export default function WhatsAppSelector({ mensaje = "Hola%20vengo%20de%20la%20p%C3%A1gina%20CompuServicesSoft", children, className = "", style, popoverClass = "bottom-full mb-3 left-1/2 -translate-x-1/2", wrapperClass = "" }: Props) {
+export default function WhatsAppSelector({ mensaje = "Hola vengo de la página CompuServicesSoft", children, className = "", style, popoverClass = "bottom-full mb-3 left-1/2 -translate-x-1/2", wrapperClass = "" }: Props) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -63,7 +63,7 @@ export default function WhatsAppSelector({ mensaje = "Hola%20vengo%20de%20la%20p
             {NUMEROS.map((n) => (
               <a
                 key={n.numero}
-                href={`https://wa.me/${n.numero}?text=${mensaje}`}
+                href={`https://wa.me/${n.numero}?text=${encodeURIComponent(mensaje)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}

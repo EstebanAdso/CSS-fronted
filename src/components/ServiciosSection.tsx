@@ -185,7 +185,7 @@ export default function ServiciosSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <WhatsAppSelector
-              mensaje="Hola%20vengo%20de%20la%20p%C3%A1gina%20CompuServicesSoft,%20necesito%20servicio%20t%C3%A9cnico"
+              mensaje="Hola vengo de la página CompuServicesSoft, necesito servicio técnico"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold bg-gray-900 hover:bg-gray-700 text-white transition-colors"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
